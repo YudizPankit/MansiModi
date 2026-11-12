@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Mansi Modi · Artiste &amp; Artpreneur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Manrope:wght@300;400;500;600&amp;family=Tiro+Devanagari+Hindi&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0f0c0a;color:#f3ede4;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#e9b04f;text-decoration:none}
+a:hover{color:#f3ede4}
+::selection{background:#e9b04f;color:#0f0c0a}
+@keyframes mm-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mm-marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes mm-spin{to{transform:rotate(360deg)}}
+@keyframes mm-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;background:#0f0c0a;color:#f3ede4;overflow-x:clip">
+
+<div ref="{{ loaderRef }}" style="position:fixed;inset:0;z-index:100;background:#0f0c0a;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,4vw,56px)">
+  <div style="display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span>Mansi Modi</span><span>Artiste &amp; Artpreneur</span></div>
+  <div style="font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(96px,18vw,260px);line-height:1.1;color:#e9b04f;text-align:center">नृत्य</div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="height:1px;background:rgba(243,237,228,.16);overflow:hidden"><div ref="{{ barRef }}" style="height:100%;background:#e9b04f;transform-origin:left;transform:scaleX(0)"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span>Setting the stage</span><span ref="{{ countRef }}" style="font-variant-numeric:tabular-nums">000</span></div>
+  </div>
+</div>
+
+<div style="position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.07;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+<div ref="{{ progRef }}" style="position:fixed;top:0;left:0;right:0;height:2px;background:#e9b04f;transform-origin:left;transform:scaleX(0);z-index:60"></div>
+<div ref="{{ ringRef }}" style="position:fixed;top:0;left:0;width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid rgba(233,176,79,.75);border-radius:50%;pointer-events:none;z-index:96;display:none;align-items:center;justify-content:center;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#0f0c0a;transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),margin .35s cubic-bezier(.2,.7,.2,1),background .35s"><span ref="{{ ringLabelRef }}"></span></div>
+<div ref="{{ dotRef }}" style="position:fixed;top:0;left:0;width:6px;height:6px;margin:-3px 0 0 -3px;background:#e9b04f;border-radius:50%;pointer-events:none;z-index:97;display:none"></div>
+<div ref="{{ floatRef }}" style="position:fixed;top:0;left:0;width:230px;height:290px;margin:-145px 0 0 -115px;pointer-events:none;z-index:40;border-radius:999px 999px 0 0;overflow:hidden;opacity:0;scale:.8;transition:opacity .35s,scale .45s cubic-bezier(.2,.7,.2,1);background:#17120f"><img ref="{{ floatImgRef }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+
+<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent">
+  <div style="max-width:1440px;margin:0 auto;padding:18px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="font-family:'Instrument Serif',serif;font-size:26px;color:#f3ede4;line-height:1">Mansi <span style="font-style:italic;color:#e9b04f">Modi</span></a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:clamp(18px,2.2vw,34px);font-size:13px;letter-spacing:.06em">
+        <a href="#about" style="color:#f3ede4" style-hover="color:#e9b04f">About</a>
+        <a href="#highlights" style="color:#f3ede4" style-hover="color:#e9b04f">Highlights</a>
+        <a href="#portfolio" style="color:#f3ede4" style-hover="color:#e9b04f">Portfolio</a>
+        <a href="#gallery" style="color:#f3ede4" style-hover="color:#e9b04f">Gallery</a>
+        <a href="#training" style="color:#f3ede4" style-hover="color:#e9b04f">Training</a>
+        <a href="#awards" style="color:#f3ede4" style-hover="color:#e9b04f">Awards</a>
+        <a href="#contact" data-magnet="" style="color:#0f0c0a;background:#e9b04f;padding:11px 20px;border-radius:999px;font-weight:600" style-hover="background:#f3ede4;color:#0f0c0a">Get in touch</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}">
+      <button onClick="{{ toggleMenu }}" style="all:unset;cursor:pointer;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:12px 18px;border:1px solid rgba(243,237,228,.3);border-radius:999px;color:#f3ede4">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}">
+  <div style="position:fixed;inset:0;z-index:45;background:#0f0c0a;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:100px 28px 40px">
+    <a href="#about" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">About</a>
+    <a href="#highlights" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">Highlights</a>
+    <a href="#portfolio" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">Portfolio</a>
+    <a href="#gallery" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">Gallery</a>
+    <a href="#training" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">Training</a>
+    <a href="#awards" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-size:52px;line-height:1.1;color:#f3ede4">Awards</a>
+    <a href="#contact" onClick="{{ closeMenu }}" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:52px;line-height:1.1;color:#e9b04f">Get in touch</a>
+  </div>
+</sc-if>
+
+<section id="top" style="position:relative;min-height:100svh;max-width:1440px;margin:0 auto;padding:clamp(100px,13vh,140px) clamp(20px,4vw,56px) clamp(28px,4vh,48px);display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899">
+    <span data-hero="fade" data-delay="500">Kathak · Belly Dance · Choreography</span>
+    <span data-hero="fade" data-delay="600">Ahmedabad, India</span>
+  </div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr auto;margin-top:clamp(20px,3vh,40px);position:relative">
+    <div style="grid-column:1 / 13;grid-row:1;z-index:2;overflow:hidden;pointer-events:none">
+      <div data-hero="line" data-delay="0" style="font-family:'Instrument Serif',serif;font-size:clamp(92px,17.5vw,272px);line-height:.92;letter-spacing:-.02em;padding-bottom:.04em">Mansi</div>
+    </div>
+    <div data-hero="frame" data-delay="200" style="grid-column:{{ heroImgCol }};grid-row:1 / 4;justify-self:center;align-self:start;width:min(100%,54vh);aspect-ratio:3/4;margin-top:clamp(30px,6vw,90px);border-radius:999px 999px 0 0;overflow:hidden;background:#17120f;position:relative">
+      <img data-speed="0.12" src="https://static.wixstatic.com/media/458390_39fbac9c86df477cb19e3603d6fdd033~mv2.jpg/v1/fit/w_1400,h_1400,q_85,enc_auto/458390_39fbac9c86df477cb19e3603d6fdd033~mv2.jpg" alt="Mansi Modi performing Kathak" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.18)">
+    </div>
+    <div style="grid-column:1 / 13;grid-row:3;z-index:2;overflow:hidden;text-align:right;pointer-events:none">
+      <div data-hero="line" data-delay="120" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(92px,17.5vw,272px);line-height:.92;letter-spacing:-.02em;color:#e9b04f;padding:0 .06em .08em 0">Modi</div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:clamp(28px,4vh,48px)">
+    <div data-hero="fade" data-delay="800" style="max-width:400px;display:flex;flex-direction:column;gap:18px">
+      <p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(28px,2.6vw,40px);line-height:1.05">Artiste &amp; Artpreneur</p>
+      <p style="margin:0;color:#b5a899;font-size:15px;line-height:1.65;text-wrap:pretty">Kathak performer with Kadamb Centre for Dance, choreographer and senior Belly Dance faculty at D-Dancing Street.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px">
+        <a href="#contact" data-magnet="" style="background:#e9b04f;color:#0f0c0a;padding:15px 26px;border-radius:999px;font-size:14px;font-weight:600" style-hover="background:#f3ede4;color:#0f0c0a">Get in touch</a>
+        <a href="#portfolio" data-magnet="" style="border:1px solid rgba(243,237,228,.3);color:#f3ede4;padding:14px 26px;border-radius:999px;font-size:14px" style-hover="border-color:#e9b04f;color:#e9b04f">View portfolio</a>
+      </div>
+    </div>
+    <div data-hero="fade" data-delay="950" style="display:flex;align-items:center;gap:28px">
+      <a href="#about" style="display:flex;flex-direction:column;align-items:center;gap:10px;color:#b5a899;font-size:11px;letter-spacing:.24em;text-transform:uppercase">
+        <span>Scroll</span>
+        <span style="width:1px;height:44px;background:#e9b04f;animation:mm-bob 2.2s ease-in-out infinite"></span>
+      </a>
+      <div style="position:relative;width:132px;height:132px">
+        <svg viewBox="0 0 132 132" width="132" height="132" style="animation:mm-spin 18s linear infinite;display:block">
+          <defs><path id="mm-circle" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"></path></defs>
+          <text fill="#f3ede4" style="font-size:10.4px;letter-spacing:3.1px;text-transform:uppercase;font-family:Manrope,sans-serif"><textPath href="#mm-circle">Artiste · Artpreneur · Kathak · Belly Dance ·</textPath></text>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Tiro Devanagari Hindi',serif;font-size:26px;color:#e9b04f">नृ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="border-top:1px solid rgba(243,237,228,.14);border-bottom:1px solid rgba(243,237,228,.14);overflow:hidden;padding:26px 0">
+  <div style="display:flex;width:max-content;animation:mm-marquee 46s linear infinite">
+    <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="10">
+      <div style="display:flex;align-items:center;gap:40px;padding-right:40px;font-family:'Instrument Serif',serif;font-size:clamp(32px,4vw,56px);white-space:nowrap">
+        <span style="font-style:{{ m.fs }};color:{{ m.c }}">{{ m.t }}</span>
+        <span style="width:10px;height:10px;background:#e9b04f;transform:rotate(45deg)"></span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<section id="about" style="background:#efe7da;color:#1a1410;position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,180px) clamp(20px,4vw,56px)">
+    <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#5e5248;margin-bottom:36px"><span style="color:#9c4a1e">(01)</span><span>About</span></div>
+    <h2 ref="{{ aboutRef }}" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(36px,4.8vw,76px);line-height:1.04;letter-spacing:-.01em;max-width:1240px">
+      <sc-for list="{{ words }}" as="w" hint-placeholder-count="24"><span data-word="" style="opacity:.16;transition:opacity .25s">{{ w }} </span></sc-for>
+    </h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(48px,7vw,110px);margin-top:clamp(64px,8vw,120px);align-items:start">
+      <div data-reveal="clip" style="border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5.3;background:#ddd2c2;width:100%;max-width:540px">
+        <img data-speed="0.1" src="https://static.wixstatic.com/media/458390_9c5824e0e97945759c574d2ea9e141d4~mv2.jpg/v1/fit/w_1200,h_1200,q_85,enc_auto/458390_9c5824e0e97945759c574d2ea9e141d4~mv2.jpg" alt="Portrait of Mansi Modi" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.18)">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:40px;padding-top:clamp(0px,3vw,40px)">
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:14px;padding-bottom:36px;border-bottom:1px solid rgba(26,20,16,.16)">
+          <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9c4a1e">Lineage</span>
+          <p style="margin:0;font-family:'Instrument Serif',serif;font-size:clamp(26px,2.4vw,36px);line-height:1.15;text-wrap:pretty">Disciple of Padma Vibhushan <span style="font-style:italic">Kumudini Lakhia</span>, Kadamb Centre for Dance.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;font-size:16px;line-height:1.75;color:#3d332b">
+          <p data-reveal="" style="margin:0;text-wrap:pretty">Her journey with Kadamb Centre for Dance began as a disciple of Padma Vibhushan Kumudini Lakhia and evolved into roles as a faculty member and professional performer with the Kadamb Performing Unit, reflecting her deep understanding of Kathak.</p>
+          <p data-reveal="" data-delay="80" style="margin:0;text-wrap:pretty">Alongside this, Mansi has led D-Dancing Street for over 16 years as a choreographer and senior faculty for Belly Dance.</p>
+          <p data-reveal="" data-delay="160" style="margin:0;text-wrap:pretty">She has represented Indian culture internationally through classical and folk dance and actively promotes cross-cultural performing arts initiatives.</p>
+          <p data-reveal="" data-delay="240" style="margin:0;text-wrap:pretty">With expertise in teaching technique, choreographing culturally rich performances, and creating thematic productions, Mansi brings together creative vision and entrepreneurial excellence.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(26,20,16,.16);border:1px solid rgba(26,20,16,.16)">
+          <div data-reveal="" style="background:#efe7da;padding:26px 22px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(48px,5vw,72px);line-height:1"><span data-count="15">15</span><span style="color:#9c4a1e">+</span></span><span style="font-size:13px;color:#5e5248;line-height:1.5">Years of professional dance</span></div>
+          <div data-reveal="" data-delay="80" style="background:#efe7da;padding:26px 22px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(48px,5vw,72px);line-height:1"><span data-count="16">16</span><span style="color:#9c4a1e">+</span></span><span style="font-size:13px;color:#5e5248;line-height:1.5">Years leading D-Dancing Street</span></div>
+          <div data-reveal="" data-delay="160" style="background:#efe7da;padding:26px 22px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(48px,5vw,72px);line-height:1"><span data-count="10">10</span></span><span style="font-size:13px;color:#5e5248;line-height:1.5">Years teaching at Kadamb Centre for Dance</span></div>
+          <div data-reveal="" data-delay="240" style="background:#efe7da;padding:26px 22px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(48px,5vw,72px);line-height:1;font-style:italic">M.Phil.</span><span style="font-size:13px;color:#5e5248;line-height:1.5">Performing Arts, Kathak · Gujarat University</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="highlights" style="position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,72px)">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span style="color:#e9b04f">(02)</span><span>Highlights</span></div>
+        <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,7.5vw,120px);line-height:.95;letter-spacing:-.02em">On <span style="font-style:italic;color:#e9b04f">stage</span></h2>
+      </div>
+      <p data-reveal="" style="margin:0;max-width:320px;color:#b5a899;font-size:15px;line-height:1.65">From Namaste Russia in 2015 to the Nrityam Saketam Festival in 2026.</p>
+    </div>
+    <div style="border-top:1px solid rgba(243,237,228,.14)">
+      <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="8">
+        <div data-reveal="" data-float="{{ h.img }}" style="display:grid;grid-template-columns:minmax(52px,110px) minmax(0,1fr) minmax(0,auto) 28px;gap:clamp(12px,2vw,32px);align-items:baseline;padding:clamp(18px,2vw,26px) 0;border-bottom:1px solid rgba(243,237,228,.14);transition:padding .45s cubic-bezier(.2,.7,.2,1),color .3s;color:#f3ede4" style-hover="padding-left:clamp(8px,2vw,28px);color:#e9b04f">
+          <span style="font-size:13px;letter-spacing:.12em;color:#b5a899;font-variant-numeric:tabular-nums">{{ h.year }}</span>
+          <span style="font-family:'Instrument Serif',serif;font-size:clamp(26px,3.2vw,48px);line-height:1.05">{{ h.title }}</span>
+          <span style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#b5a899;text-align:right">{{ h.place }}</span>
+          <span style="font-size:20px;text-align:right">↗</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" style="background:#17120f;position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:clamp(36px,4vw,56px)">
+      <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span style="color:#e9b04f">(03)</span><span>Portfolio</span></div>
+      <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,7.5vw,120px);line-height:.95;letter-spacing:-.02em">Many <span style="font-style:italic;color:#e9b04f">roles</span></h2>
+    </div>
+    <div data-reveal="" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,72px)">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4">
+        <button onClick="{{ r.select }}" data-magnet="" style="all:unset;cursor:pointer;padding:13px 24px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:.02em;background:{{ r.bg }};color:{{ r.fg }};border:1px solid {{ r.bd }};transition:background .3s,color .3s,border-color .3s">{{ r.name }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ rolesCols }};gap:clamp(40px,6vw,96px);align-items:start">
+      <div style="position:{{ rolePos }};top:110px;display:flex;flex-direction:column;gap:24px">
+        <div ref="{{ roleImgRef }}" style="border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5;background:#0f0c0a;width:100%;max-width:{{ roleImgMax }}">
+          <img src="{{ role.img }}" alt="{{ role.name }}" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="display:flex;align-items:baseline;gap:16px">
+          <span style="font-size:13px;color:#e9b04f;letter-spacing:.12em">{{ role.idx }} / 04</span>
+          <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,4vw,60px);line-height:1">{{ role.name }}</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:56px">
+        <sc-for list="{{ role.groups }}" as="g" hint-placeholder-count="1">
+          <div style="display:flex;flex-direction:column">
+            <h3 style="margin:0 0 18px;font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#b5a899">{{ g.title }}</h3>
+            <div style="border-top:1px solid rgba(243,237,228,.14)">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="6">
+                <div data-stagger="role" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid rgba(243,237,228,.14);font-size:16px;line-height:1.6;color:#e6ddd1">
+                  <span style="font-size:12px;color:#e9b04f;padding-top:5px;font-variant-numeric:tabular-nums">{{ it.n }}</span>
+                  <span style="text-wrap:pretty">{{ it.t }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ g.hasMore }}">
+              <button onClick="{{ g.toggle }}" style="all:unset;cursor:pointer;align-self:flex-start;margin-top:20px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#e9b04f;border-bottom:1px solid #e9b04f;padding-bottom:4px" style-hover="color:#f3ede4;border-color:#f3ede4">{{ g.moreLabel }}</button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" ref="{{ galRef }}" style="position:relative;height:300vh">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center">
+    <div style="position:absolute;top:clamp(84px,12vh,120px);left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899;z-index:2">
+      <span><span style="color:#e9b04f">(04)</span>   Gallery</span><span>Scroll</span>
+    </div>
+    <div ref="{{ trackRef }}" style="display:flex;align-items:center;gap:clamp(20px,3vw,48px);padding:0 clamp(20px,4vw,56px);width:max-content;height:70vh;margin-top:6vh;will-change:transform">
+      <div style="flex:none;width:clamp(280px,34vw,520px);display:flex;flex-direction:column;gap:24px">
+        <h2 style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(64px,9vw,150px);line-height:.9;letter-spacing:-.02em">In <span style="font-style:italic;color:#e9b04f">motion</span></h2>
+        <p style="margin:0;color:#b5a899;font-size:15px;line-height:1.65;max-width:340px">Kathak, Belly Dance, contemporary work and the classroom.</p>
+      </div>
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="5">
+        <figure data-cursor="View" style="margin:0;flex:none;height:{{ g.h }};aspect-ratio:{{ g.ar }};align-self:{{ g.al }};border-radius:{{ g.r }};overflow:hidden;background:#17120f;position:relative">
+          <img src="{{ g.src }}" alt="Mansi Modi gallery photo" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.07)">
+          <figcaption style="position:absolute;left:16px;bottom:14px;font-size:12px;letter-spacing:.16em;color:#f3ede4;text-shadow:0 1px 8px rgba(0,0,0,.6)">{{ g.n }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(24px,5vh,48px);height:1px;background:rgba(243,237,228,.16)"><div ref="{{ galBarRef }}" style="height:100%;background:#e9b04f;transform-origin:left;transform:scaleX(0)"></div></div>
+  </div>
+</section>
+
+<section id="training" style="background:#efe7da;color:#1a1410;position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px)">
+    <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#5e5248;margin-bottom:28px"><span style="color:#9c4a1e">(05)</span><span>Training</span></div>
+    <div data-reveal="" style="display:flex;align-items:baseline;gap:clamp(12px,2vw,28px);flex-wrap:wrap;margin-bottom:clamp(48px,6vw,88px)">
+      <button onClick="{{ showKathak }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-size:clamp(64px,10vw,164px);line-height:.95;letter-spacing:-.02em;color:{{ kColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Kathak</button>
+      <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,6vw,96px);color:#9c4a1e">&amp;</span>
+      <button onClick="{{ showBelly }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,10vw,164px);line-height:.95;letter-spacing:-.02em;color:{{ bColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Belly</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+      <div ref="{{ trainImgRef }}" style="border-radius:24px;overflow:hidden;aspect-ratio:{{ trainAr }};background:#ddd2c2;width:100%;max-width:600px">
+        <img src="{{ trainImg }}" alt="{{ trainName }}" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="border-top:1px solid rgba(26,20,16,.16)">
+        <sc-for list="{{ trainItems }}" as="t" hint-placeholder-count="6">
+          <div data-stagger="train" style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid rgba(26,20,16,.16);font-size:16px;line-height:1.6;color:#3d332b">
+            <span style="font-size:12px;color:#9c4a1e;padding-top:5px;font-variant-numeric:tabular-nums">{{ t.n }}</span>
+            <span style="text-wrap:pretty">{{ t.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);margin-top:clamp(80px,10vw,140px)">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <h3 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,3.4vw,52px);line-height:1">Auxiliary <span style="font-style:italic;color:#9c4a1e">qualification</span></h3>
+        <div style="border-top:1px solid rgba(26,20,16,.16)">
+          <sc-for list="{{ aux }}" as="a" hint-placeholder-count="5">
+            <div data-reveal="" style="padding:16px 0;border-bottom:1px solid rgba(26,20,16,.16);font-size:15px;line-height:1.6;color:#3d332b;text-wrap:pretty">{{ a }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <h3 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,3.4vw,52px);line-height:1">Education</h3>
+        <div style="border-top:1px solid rgba(26,20,16,.16)">
+          <div data-reveal="" style="padding:22px 0;border-bottom:1px solid rgba(26,20,16,.16);display:flex;flex-direction:column;gap:6px"><span style="font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1">M.Phil in Performing Arts</span><span style="font-size:14px;color:#5e5248">Dance, Kathak · Gujarat University</span></div>
+          <div data-reveal="" data-delay="80" style="padding:22px 0;border-bottom:1px solid rgba(26,20,16,.16);display:flex;flex-direction:column;gap:6px"><span style="font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1">M.P.A, Masters of Performing Arts</span><span style="font-size:14px;color:#5e5248">Upasna Performing Art · 2013–2015</span></div>
+          <div data-reveal="" data-delay="160" style="padding:22px 0;border-bottom:1px solid rgba(26,20,16,.16);display:flex;flex-direction:column;gap:6px"><span style="font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1">B.B.A, Bachelors in Business Administration</span><span style="font-size:14px;color:#5e5248">Gujarat University</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="watch" style="position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,56px)">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span style="color:#e9b04f">(06)</span><span>Watch</span></div>
+        <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,7.5vw,120px);line-height:.95;letter-spacing:-.02em">All <span style="font-style:italic;color:#e9b04f">videos</span></h2>
+      </div>
+      <a data-reveal="" href="https://www.youtube.com/channel/UCBwcccjUWK4hE4AMCUWQWoA" target="_blank" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#e9b04f;border-bottom:1px solid #e9b04f;padding-bottom:4px">YouTube channel ↗</a>
+    </div>
+    <div data-reveal="clip" style="position:relative;aspect-ratio:16/9;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:#17120f">
+      <sc-if value="{{ playing }}">
+        <iframe src="https://www.youtube-nocookie.com/embed/K924hJIgJc0?autoplay=1&amp;rel=0" title="Mansi Modi videos" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+      </sc-if>
+      <sc-if value="{{ notPlaying }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ play }}" data-cursor="Play" style="all:unset;position:absolute;inset:0;cursor:pointer;display:block">
+          <img data-speed="0.08" src="https://i.ytimg.com/vi/K924hJIgJc0/maxresdefault.jpg" alt="Video thumbnail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18)">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,0) 40%,rgba(15,12,10,.7))"></span>
+          <span style="position:absolute;left:50%;top:50%;width:clamp(88px,10vw,140px);height:clamp(88px,10vw,140px);margin:calc(clamp(88px,10vw,140px) / -2) 0 0 calc(clamp(88px,10vw,140px) / -2);border-radius:50%;background:#e9b04f;color:#0f0c0a;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Play</span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<section id="awards" style="background:#17120f;position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:clamp(40px,5vw,72px)">
+      <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span style="color:#e9b04f">(07)</span><span>Awards</span></div>
+      <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(52px,7.5vw,120px);line-height:.95;letter-spacing:-.02em">Awards &amp; <span style="font-style:italic;color:#e9b04f">recognition</span></h2>
+    </div>
+    <div style="border-top:1px solid rgba(243,237,228,.14)">
+      <sc-for list="{{ awards }}" as="a" hint-placeholder-count="6">
+        <div data-reveal="" style="display:grid;grid-template-columns:minmax(52px,110px) minmax(0,1fr);gap:clamp(12px,2vw,32px);align-items:baseline;padding:clamp(20px,2.2vw,30px) 0;border-bottom:1px solid rgba(243,237,228,.14);transition:color .3s,padding .45s cubic-bezier(.2,.7,.2,1);color:#e6ddd1" style-hover="color:#e9b04f;padding-left:clamp(8px,2vw,28px)">
+          <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(28px,3vw,44px);line-height:1;color:#e9b04f">{{ a.n }}</span>
+          <span style="font-size:clamp(17px,1.5vw,22px);line-height:1.5;text-wrap:pretty">{{ a.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<div style="overflow:hidden;padding:clamp(28px,4vw,56px) 0;border-bottom:1px solid rgba(243,237,228,.14)">
+  <div style="display:flex;width:max-content;animation:mm-marquee-r 38s linear infinite">
+    <sc-for list="{{ marquee2 }}" as="m" hint-placeholder-count="10">
+      <div style="display:flex;align-items:center;gap:48px;padding-right:48px;font-family:'Instrument Serif',serif;font-size:clamp(64px,10vw,160px);line-height:1;white-space:nowrap">
+        <span style="color:transparent;-webkit-text-stroke:1px rgba(243,237,228,.55)">{{ m }}</span>
+        <span style="width:16px;height:16px;background:#e9b04f;transform:rotate(45deg)"></span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<section id="contact" style="position:relative">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,4vw,56px) 40px">
+    <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899;margin-bottom:28px"><span style="color:#e9b04f">(08)</span><span>Contact</span></div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <h2 data-reveal="" style="margin:0;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(76px,14vw,230px);line-height:.88;letter-spacing:-.03em">Get in <span style="font-style:italic;color:#e9b04f">touch</span></h2>
+      <a data-reveal="" data-magnet="" href="mailto:modimansi875@gmail.com" style="flex:none;width:clamp(120px,13vw,180px);height:clamp(120px,13vw,180px);border-radius:50%;background:#e9b04f;color:#0f0c0a;display:flex;align-items:center;justify-content:center;font-size:clamp(34px,4vw,52px)" style-hover="background:#f3ede4;color:#0f0c0a">↗</a>
+    </div>
+    <a data-reveal="" href="mailto:modimansi875@gmail.com" style="display:inline-block;margin-top:clamp(36px,5vw,64px);font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,60px);color:#f3ede4;border-bottom:1px solid rgba(243,237,228,.3);padding-bottom:6px;word-break:break-word" style-hover="color:#e9b04f;border-color:#e9b04f">modimansi875@gmail.com</a>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px;margin-top:clamp(64px,8vw,110px);padding-top:32px;border-top:1px solid rgba(243,237,228,.14)">
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899">For</span><span style="font-size:15px;line-height:1.7">Performances, choreography, workshops and curation</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899">Based in</span><span style="font-size:15px;line-height:1.7">Ahmedabad, India</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899">Follow</span>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:15px">
+          <a href="https://instagram.com/lovefornritya" target="_blank" style="color:#f3ede4" style-hover="color:#e9b04f">Instagram ↗</a>
+          <a href="https://www.youtube.com/channel/UCBwcccjUWK4hE4AMCUWQWoA" target="_blank" style="color:#f3ede4" style-hover="color:#e9b04f">YouTube ↗</a>
+          <a href="https://www.linkedin.com/in/mansi-modi-8a21101a5" target="_blank" style="color:#f3ede4" style-hover="color:#e9b04f">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(64px,8vw,100px);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#b5a899">
+      <span>© 2026 Mansi Modi</span>
+      <a href="#top" style="color:#b5a899" style-hover="color:#e9b04f">Back to top ↑</a>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showLoader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;cursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Full&quot;,&quot;Subtle&quot;],&quot;default&quot;:&quot;Full&quot;,&quot;tsType&quot;:&quot;'Full'|'Subtle'&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+const M='https://static.wixstatic.com/media/458390_';
+const I=['1993894713da456daae98347e55afc74~mv2.jpg','aa4eceedb65240f3882c38a64a2aa678~mv2.jpeg','b29fc6224d4f4a1b85831d9fcb1cd13e~mv2.jpg','9c5824e0e97945759c574d2ea9e141d4~mv2.jpg','f5971917062f471da8488a2cfc2f45ea~mv2.jpeg','8439e7b29c314f52b4a17ea1ab9f5d1a~mv2.jpeg','0279c44be81d470caa0984b748374c8a~mv2.jpg','7280c8ec3d414db6bbe8d5ad07e5defd~mv2.jpg','63d639f11d944ad29459fcf558e391b4~mv2.jpg','d4345f10aa8446a09563100f9fd4b6c5~mv2.jpg','0ccbf0b8f3ee43d6ab873d72b2da8f18~mv2.jpg','22f1ee5c9af04cb49b31301764d4196b~mv2.jpg','46aaf075e5434a02b03581131e4eb8c4~mv2.jpg','055ebbf53946477fb914a5b818a228fb~mv2.jpg','39fbac9c86df477cb19e3603d6fdd033~mv2.jpg'];
+const W=(i,w=1400)=>`${M}${I[i]}/v1/fit/w_${w},h_${w},q_85,enc_auto/458390_${I[i]}`;
+
+const WORDS='Mansi Modi is a passionate entrepreneur and a dedicated artiste with over 15 years of professional dance experience. She holds an M.Phil. in Dance.'.split(' ');
+
+const HL=[['2026','Nrityam Saketam Festival','Chennai',14],['2026','Hyderabad Dance Festival','Hyderabad',4],['2026','Alti-Palti Festival','Mumbai',7],['2026','Semi-Classical Dance Course','Nritya Sabha',13],['2025','Semi-Classical Dance Course','GU',12],['2025','Taqseem Tribe Launch','Ahmedabad',6],['2024','Dance Curator','Abhivyakti City Arts Project',10],['2024','Poland','',9],['2023','Paris','France',0],['2023','NMACC','Mumbai',9],['2023','Khajuraho Festival','Khajuraho, MP',1],['2022','Kalakshetra Festival','Chennai',8],['2021','NCPA Theatre','Mumbai',3],['2018','Opera House','Mumbai',5],['2015','Namaste Russia','Russia',11]];
+
+const MQ=['Nrityam Saketam Festival','Hyderabad Dance Festival','Alti-Palti Festival','NMACC','Khajuraho Festival','Kalakshetra Festival','NCPA Theatre','Opera House','Paris','Poland','Namaste Russia'];
+const MQ2=['Kathak','Belly Dance','Choreography','Curation','Teaching'];
+
+const ROLES=[
+{name:'Performer',img:0,groups:[
+{title:'Performances & Artistic Journey',items:[
+`Presented solo Kathak recital SAM at Kanoria Centre For Arts, Ahmedabad & Nrityam Saketam Festival, Chennai, September 2026.`,
+`Presented Kathak solo performances of Nritta and Abhinaya with live music at Guru–Shishya Connect, conducted by Guru Aniket Khandekar in Ahmedabad, April 2026`,
+`Performed the Kathak composition “Chaturang” at the Hyderabad Dance Festival in April 2026.`,
+`Performed a fusion dance piece "Maryam" conceptualized and choreographed by herself at the Alti Palti Festival, Mumbai, in April 2026.`,
+`Performed at the Pandit Birju Maharaj Jayanti Mahotsav and Vasantotsava in February 2026.`,
+`Performed Kadamb choreographies at the DeepTrayam AI Festival, Delhi, in November 2025.`,
+`Presented a conceptual contemporary piece at the Ahmedabad Movement Festival in December 2025.`,
+`Performed for the 75th Republic Day of India celebrations in Poland in January 2024.`,
+`Performed at the G20 Meet with the Kadamb Centre for Dance troupe at the invitation of the Government of Gujarat and Government of India, Gandhinagar, 2024.`,
+`Performed at Musée du quai Branly – Jacques Chirac in December 2023.`,
+`Presented a solo performance at Guru–Shishya Connect 2.0 organized by Khandekar’s Institution, Ahmedabad, in 2023.`,
+`Performed with the Kadamb troupe at Nita Mukesh Ambani Cultural Centre in 2023.`,
+`Performed at Nishagandhi Auditorium during the Onam Festival with the Kadamb troupe in collaboration with Darpana Academy of Performing Arts.`,
+`Presented a Kathak solo at the annual programme of the Pandit Atul Desai Foundation on the occasion of Pt. Atul Desai’s birth anniversary.`,
+`Performed with the Kadamb Performing Troupe at the Khajuraho Dance Festival in 2023.`,
+`Active member of the Kadamb Performing Troupe, representing the choreographies of Kumudini Lakhia nationally and internationally.`,
+`Performed “ATAH KIM” at the Nita Mukesh Ambani Cultural Centre in April 2023.`,
+`Performed at the Amrit Yuva Kalotsav (2022–23), organized by Sangeet Natak Akademi.`,
+`Performed with the Kadamb troupe at INS Khukri for a government event supported by Azadi Ka Amrit Mahotsav in June 2022, in the presence of Amit Shah.`,
+`Performed at the Nakshatra Festival at Jamshed Bhabha Theatre, National Centre for the Performing Arts.`,
+`Performed at the Kalakshetra Festival in 2022.`,
+`Presented choreographies by Kumudini Lakhia at the Delhi Kathak Mahotsav organized by Kathak Kendra in 2022, celebrating 100 years of Sitara Devi, Birju Maharaj, and Guru Munna Lal Shukla.`,
+`Performed with the Kadamb troupe at the Amritam Gamay International Music & Dance Festival, Ahmedabad, in July 2022, supported by Azadi Ka Amrit Mahotsav.`,
+`Performed in the 42nd Vikram Sarabhai Festival 2021 at Natarani Amphitheatre, Darpana Academy of Performing Arts.`,
+`Presented a Kathak solo recital for the Horizon Series organized by Indian Council for Cultural Relations Gujarat.`,
+`Presented a Kathak recital on the virtual platform Playtoome.com through the show “Rangmanch.”`,
+`Performed contemporary and Kathak works at Guru Dakshina Festival 2021 organized by JG Performing Arts College, Ahmedabad.`,
+`Performed at the virtual Pt. Lacchu Maharaj Nritya Mahotsav in 2020 under the guidance of Kumudini Lakhia at Kadamb.`,
+`Performed nationally and internationally with various Indian folk and semi-classical dance groups.`,
+`Performed a classical dance act as the opening sequence for the Tanishq Fashion Show in Ahmedabad.`,
+`Performed at Synergy 3.0 organized by HOW (House of Weddings) for corporate networking events.`,
+`Performed a Garba piece representing Gujarat at the Jhankriti Dance Competition organized by WFAC and supported by Azadi Ka Amrit Mahotsav.`,
+`Performed in Mauritius before Prime Minister Navin Ramgoolam in 2013, showcasing Gujarat’s folk dance Garba.`,
+`Performed before renowned personalities including Sandip Soparrkar, Jesse Randhawa, Geeta Kapoor, Raghav Juyal, Terence Lewis, Dharmesh Yelande, and others.`,
+`Represented Gujarat folk dance at the Alva’s National Folk Festival, Moodbidri (Mangalore).`,
+`Performed in Kadamb productions including Vivarta, Movement & Stills, Meraki, Yugantar, and Bells across India and internationally, including Palestine, Russia, Paris, and Italy.`]},
+{title:'AATMAN (Initiative)',items:[
+`Presented “Confluence,” a contemporary-classical production, at the Nritya Parva Festival, Vadodara, in February 2026.`,
+`Team Aatman performed at ICMC 2023, MICA Ahmedabad.`,
+`Performed a Team Aatman dance production for YFLO Ahmedabad at Umang Hutheesing Haveli, Ahmedabad.`,
+`Represented Indian culture through Team Aatman at Cypher Hours Vol. 11, Hyderabad, in 2022.`,
+`Launched the Team Aatman Showcase in Ahmedabad.`,
+`Performed and choreographed “Sangam” (Kathak–Bharatanatyam Jugalbandi) at the Balgandharva Sangeet Mahotsav 2022, Jalgaon, Maharashtra.`,
+`Performed and choreographed “Confluence” at the Abhivyakti City Arts Festival 2022, Ahmedabad.`,
+`Team Aatman performed at the Rotary International Annual Meet, Hyderabad 2022, and the online Rotary International event “Odyssey 2021.”`,
+`Performed and choreographed works for corporate events in Ahmedabad.`]},
+{title:'TAQSEEM TRIBE (Belly Dance Community)',items:[
+`Taqseem Tribe Crew performed at Evolve show 6.0.`,
+`Taqseem Tribe Crew performed at Spirit of Dance 1.0 and 2.0, organized by Furor in celebration of World Dance Day, Ahmedabad, in April 2026.`,
+`Organized Taqseem Tribe’s first Hafla Night in Ahmedabad in May 2025.`,
+`Represented D-Dancing Street and performed a Drum Solo piece at the World Dance Day Celebration organized by La Rumba.`,
+`Taqseem Tribe presented a group dance act at the Evolve 4.0 event in Ahmedabad.`,
+`Certified 7 students in Level 1 Belly Dance training.`]}]},
+{name:'Choreographer',img:7,groups:[
+{title:'Choreography, Direction & Creative Work',items:[
+`Choreographed Indian classical, fusion, and folk dance pieces for Guru–Shishya Connect, Ahmedabad, in April 2026.`,
+`Curates and choreographs concept-driven dance dramas for corporate shows and stage productions.`,
+`Choreographed the theatre production Surya Ki Antim Kiran Se Surya Ki Pehli Kiran Tak, presented at the Bharat Rang Mahotsav, 2025.`,
+`Created Kathak choreography for the Tana-Riri dance drama production at Abhivyakti Edition 6, Ahmedabad, 2024.`,
+`Choreographed a semi-classical dance production for Gujarat University in 2023.`,
+`Choreographed a virtual Garba event for the Gujarati Girls of Ottawa group.`,
+`Choreographed a cultural dance programme for IFFCO Kandla, Gandhidham, for IUCF at Prayagraj.`,
+`Designed musical dance sequences for the play Gurudutt, directed by Nikita Sharma at the Abhivyakti City Art Festival Edition 4, Ahmedabad, 2022.`,
+`Choreographed movement and dance for the musical play Vijli, directed by Abhinay Banker at the Abhivyakti City Art Festival Edition 4, Ahmedabad, 2022.`,
+`Choreographed the Gujarati play Pathare Purya Praan, directed by Mr. Mehul.`,
+`Created abstract and concept-based movement choreography for the play Telephone.`,
+`Worked as a Movement & Dance Director at Abhinay Banker Acting Studio and Aarambh Art Academy, Ahmedabad.`,
+`Worked as a Movement and Dance Director for children’s workshops at Pandit Deendayal Energy University.`,
+`Choreographed and performed Indian classical and folk dance pieces for corporate events.`,
+`Choreographed a folk dance act for the annual function of Mahatma Gandhi International School.`,
+`Curated and performed a wedding production with Janam Crew in Goa, June 2022.`,
+`Collaborated with World Forum for Art and Culture for Kala Arpan Festival 2021, choreographing and filming a traditional Garba piece to represent Gujarat culture internationally through a virtual platform.`,
+`Conceptualized the storytelling-based hip-hop production Tinge of Actuality with DDS Crew for Abhivyakti City Art Festival Edition 2, Ahmedabad.`,
+`Collaborated with the UNM Foundation for the promotion of Abhivyakti and presented the production Dance With Me at Abhivyakti City Art Festival Edition 1.`,
+`Explores and experiments with Tribal Fusion Belly Dance while conducting Belly Dance and Tribal Fusion workshops for women and pregnant participants.`,
+`Teaches movement analysis in theatre workshops alongside Abhinay Banker.`]}]},
+{name:'Teacher',img:13,groups:[
+{title:'Teaching & Academic Experience',items:[
+`Conducted a workshop on “Psychophysical Approach to Dance” at the Alti Palti Festival, Mumbai, in April 2026.`,
+`Curated and choreographed Nritya Sabha — a Semi-Classical Course Showcase Batch presented in April 2026`,
+`Introduced a 3-Month Certified Semi-Classical Dance Course at Gujarat University.`,
+`Served as Dance Faculty at Upasana School of Performing Arts during 2023 and 2025.`,
+`Working as a teacher at Kadamb Centre for Dance for the past 10 years.`,
+`Holds over 10 years of teaching experience in Western dance forms through D-Dancing Street, Ahmedabad.`,
+`Faculty for Folk Garba and Dandiya workshops organized by World Forum for Art and Culture (WFAC).`,
+`Curated, performed, and conducted online Garba workshops for the WFAC platform.`,
+`Has 5 years of teaching experience in schools across Ahmedabad, including Calorx Foundation, Global Mission School, Atman International School, and Redbricks School.`]}]},
+{name:'Artpreneur',img:6,groups:[
+{title:'Artpreneur & Curator',items:[
+`Team Swagatam Performed for Abhivyakti at Parks, Ahmedabad, April 2025`,
+`Choreographed and Curated Funambulism Act in Abhivyakti City Art Project, Ahmedabad 2024`,
+`Curated Merkaba Module for Companies CSR Activity.`,
+`Brand Ambassador at Tap Your Talent.`,
+`Dance Curator for Abhivyakti City Arts Project Edition 6.`,
+`Member of International Dance Council CID (CONSEIL INTERNATIONAL DE LA DANSE) by UNESCO.`,
+`Speaker at ‘’I-Talk 2022’’ for SOU & E-Cell Ignite at Silver Oak University, Ahmedabad.`,
+`Member of a popular International Networking Organization, BNI in Ahmedabad in Poseidon chapter, representing D Dancing Street.`,
+`Organized & Curated Dance Movement Workshops in Ahmedabad of National Artists- Ryan Martyr & Harsha Maheshwari`,
+`Co-founded and curated Team Aatman in Jan 2022.`,
+`Created, choreographed, and directed more than 20 dance projects for YouTube Channel.`,
+`Held an informative session for The Muse at Ahmedabad University for the Youth on Lord Shiva.`]}]}];
+
+const TRAIN={
+kathak:{name:'Kathak',img:1,ar:'3/2',items:[
+`Disciple of Kumudini Lakhia, recipient of the Padma Vibhushan.`,
+`Trained in Classical Dance Kathak at Kadamb Centre for Dance for over 15 years and continues to explore and learn new movement vocabulary.`,
+`Learned under Birju Maharaj through workshops conducted in Ahmedabad, Mumbai, and Delhi.`,
+`Studied Abhinaya under Saswati Sen at Upasana School of Performing Arts.`,
+`Participated extensively in workshops conducted by renowned artists Aditi Mangaldas, Rajendra Gangani, and Gauri Diwakar.`,
+`Learning Kathak music through workshops conducted by Pandit Yogesh Samsi and Guru Divyang Vakil.`]},
+belly:{name:'Belly',img:2,ar:'7/8',items:[
+`Learning Online with International Artists.`,
+`Accomplished Banjara Format Teacher Training Course.`,
+`Attended a Belly Dance workshop from Essa Belly Dancer in D Dancing Street, Ahmedabad.`,
+`Learned from Maher Malik from Banjara School of Belly Dance - Level 01 & 02 in Ahmedabad & Vadodara.`,
+`Ilhaam for American Tribal Style (ATS) in Mumbai.`,
+`Learned online Techniques level & choreography workshops with Damini Sahay from Junkeri Belly Dance, Mumbai.`,
+`Learned with Mercedez Nieto in an online workshop.`,
+`Learned in several online choreography workshops with Bindu Bolar.`,
+`Learned in a choreography workshop with Sanjana Sharma in Ahmedabad.`,
+`Trained in Drum solo, Oriental style, Baladi, Tribal Fusion & ATS (American Tribal Style)`]}};
+
+const AUX=[
+`Completed the Contemporary Intensive Workshop (NSXP) organized by Nritya Shakti in Goa.`,
+`Appeared for the NET (JRF & Assistant Professor) Examination in Performing Arts – Kathak.`,
+`Cleared the PET examination at The Maharaja Sayajirao University of Baroda.`,
+`Completed a 4-month Theatre (Drama) course at Darpana Academy of Performing Arts under the guidance of actor Abhinay Banker.`,
+`Holds a Diploma in Multimedia Creation (DMC) from C-DAC.`,
+`Attended Camp Zero organized by Ryan Martyr at HHAS in 2022.`,
+`Attended a Dance Residency for Indian Classical Music conducted by National Centre for the Performing Arts.`,
+`Attended “Nayika Part 2: In Conversation with Mavin Khoo” in March 2026 with Mavin Khoo.`];
+
+const AWARDS=[
+`Creative Entrepreneur of the Year, 2022. Organised by Fempreneur Conference& Award.`,
+`Torch Bearer in Performing Art, Grand Queens Club Global Leadership Awards 2022. Ahmedabad`,
+`Felicitated by Rotract club of Youth United for standing as the best example of Dance enthusiasm and achieving the spectacular milestone in Indian Classical Dance. Rotary, June 2022.`,
+`The Vrindrani Award 2022’’ by Lasya Dance Pvt. Ltd, Chennai.`,
+`Award of Excellence for Classical & Western Dancer in the Category of Indian Cultural Dance by Ankhodekhi Print Media & Sun Today Newspaper.`,
+`Won 1st prize in Pandit Atul Desai Foundation Music & Dance Competition. Organized Pan India.`,
+`Won WHIZ Indian classical dance competition at NCPA – Mumbai`,
+`Won state level competitions like Ahmedabad Mirror Talent Hunt, Josh 2012 & 2014 (organized by NAEMD), Youth Festival (organized by Gujarat University) and competitions organized by NIEM`,
+`Participated and got accolades in competitions like IGT, India’s Dancing Super Star, Boogie Woogie, DID and So you think you can dance.`];
+
+const GAL=[[4,'3/2','56vh','flex-start'],[5,'9/16','68vh','flex-end'],[9,'5/3','44vh','center'],[10,'7/5','54vh','flex-start'],[8,'1/1','50vh','flex-end'],[6,'3/2','52vh','center'],[7,'2/3','66vh','flex-start'],[11,'3/2','46vh','flex-end'],[13,'2/3','62vh','center'],[0,'7/5','54vh','flex-start']];
+
+const pad=n=>String(n).padStart(2,'0');
+const EASE='cubic-bezier(.2,.7,.2,1)';
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+
+class Component extends DCLogic {
+  state={role:0,train:'kathak',exp:{},playing:false,narrow:false,menu:false};
+  rootRef=React.createRef(); loaderRef=React.createRef(); barRef=React.createRef(); countRef=React.createRef();
+  navRef=React.createRef(); progRef=React.createRef(); aboutRef=React.createRef(); galRef=React.createRef();
+  trackRef=React.createRef(); galBarRef=React.createRef(); ringRef=React.createRef(); ringLabelRef=React.createRef();
+  dotRef=React.createRef(); floatRef=React.createRef(); floatImgRef=React.createRef(); roleImgRef=React.createRef(); trainImgRef=React.createRef();
+
+  componentDidMount(){
+    const root=this.rootRef.current; if(!root) return;
+    this.root=root; this.full=(this.props.motion??'Full')!=='Subtle';
+    this.fine=window.matchMedia('(pointer:fine)').matches;
+    this.mx=innerWidth/2; this.my=innerHeight/2; this.rx=this.mx; this.ry=this.my; this.fx=this.mx; this.fy=this.my; this.lastFx=this.mx;
+    this.onResize=()=>{const n=innerWidth<900; if(n!==this.state.narrow) this.setState({narrow:n}); this.sizeGallery();};
+    this.onResize(); addEventListener('resize',this.onResize);
+    setTimeout(()=>this.sizeGallery(),800); setTimeout(()=>this.sizeGallery(),2500);
+
+    root.querySelectorAll('[data-hero]').forEach(el=>{
+      el.style.transition='none'; const k=el.dataset.hero;
+      if(k==='line') el.style.transform='translateY(110%)';
+      else if(k==='frame') el.style.clipPath='inset(100% 0 0 0)';
+      else {el.style.opacity='0'; el.style.transform='translateY(24px)';}
+    });
+
+    this.io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){this.show(e.target); this.io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+    const vh=innerHeight;
+    root.querySelectorAll('[data-reveal]').forEach(el=>{ if(el.getBoundingClientRect().top<vh*.92) return; this.hide(el); this.io.observe(el); });
+
+    this.cio=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; this.cio.unobserve(e.target); this.countUp(e.target); }),{threshold:.6});
+    root.querySelectorAll('[data-count]').forEach(el=>{ if(el.getBoundingClientRect().top>vh) { el.textContent='0'; this.cio.observe(el);} });
+
+    this.par=[...root.querySelectorAll('[data-speed]')];
+    this.words=[...root.querySelectorAll('[data-word]')]; this.wordState=[];
+    this.magnets=[...root.querySelectorAll('[data-magnet]')];
+
+    this.onMove=e=>{this.mx=e.clientX; this.my=e.clientY;};
+    addEventListener('pointermove',this.onMove,{passive:true});
+    this.onOver=e=>{
+      const t=e.target.closest ? e.target : null; if(!t) return;
+      const row=t.closest('[data-float]');
+      if(row!==this.curRow){ this.curRow=row; const f=this.floatRef.current, fi=this.floatImgRef.current;
+        if(f&&fi&&this.fine){ if(row){ fi.src=W(+row.dataset.float,700); f.style.opacity='1'; f.style.scale='1'; } else { f.style.opacity='0'; f.style.scale='.8'; } } }
+      const hit=t.closest('a,button,[data-cursor]'); if(hit!==this.curHit){ this.curHit=hit; this.setRing(hit); }
+    };
+    root.addEventListener('pointerover',this.onOver);
+
+    const showLoader=this.props.showLoader??true;
+    if(showLoader){ document.body.style.overflow='hidden'; this.runLoader(); }
+    else { const l=this.loaderRef.current; if(l) l.style.display='none'; this.heroIn(); }
+
+    this.loop=this.loop.bind(this); this.raf=requestAnimationFrame(this.loop);
+  }
+
+  componentWillUnmount(){
+    cancelAnimationFrame(this.raf); cancelAnimationFrame(this.lraf);
+    removeEventListener('resize',this.onResize); removeEventListener('pointermove',this.onMove);
+    this.root&&this.root.removeEventListener('pointerover',this.onOver);
+    this.io&&this.io.disconnect(); this.cio&&this.cio.disconnect(); document.body.style.overflow='';
+  }
+
+  componentDidUpdate(pp,ps){
+    if(ps.role!==this.state.role){ this.stagger('role'); this.wipe(this.roleImgRef.current); }
+    if(ps.train!==this.state.train){ this.stagger('train'); this.wipe(this.trainImgRef.current); }
+    if(ps.exp!==this.state.exp || ps.narrow!==this.state.narrow) setTimeout(()=>this.sizeGallery(),50);
+    this.magnets=[...this.root.querySelectorAll('[data-magnet]')];
+    this.par=[...this.root.querySelectorAll('[data-speed]')];
+  }
+
+  runLoader(){
+    const t0=performance.now(), dur=2000, bar=this.barRef.current, cnt=this.countRef.current;
+    const tick=t=>{ const p=clamp((t-t0)/dur), e=1-Math.pow(1-p,3);
+      if(cnt) cnt.textContent=String(Math.round(e*100)).padStart(3,'0');
+      if(bar) bar.style.transform=`scaleX(${e})`;
+      if(p<1) this.lraf=requestAnimationFrame(tick); else this.exitLoader(); };
+    this.lraf=requestAnimationFrame(tick);
+  }
+  exitLoader(){
+    const l=this.loaderRef.current; if(!l) return;
+    l.style.transition='transform 1.15s cubic-bezier(.76,0,.24,1)'; l.style.transform='translateY(-100%)';
+    setTimeout(()=>this.heroIn(),380);
+    setTimeout(()=>{ l.style.display='none'; document.body.style.overflow=''; },1200);
+  }
+  heroIn(){
+    this.root.querySelectorAll('[data-hero]').forEach(el=>{
+      const d=+(el.dataset.delay||0);
+      el.style.transition=`transform 1.3s cubic-bezier(.19,1,.22,1) ${d}ms, opacity 1s ${EASE} ${d}ms, clip-path 1.6s cubic-bezier(.77,0,.18,1) ${d}ms`;
+      el.style.transform='none'; el.style.opacity='1'; el.style.clipPath='inset(0% 0 0 0)';
+    });
+  }
+  hide(el){
+    el.style.transition='none';
+    if(el.dataset.reveal==='clip') el.style.clipPath='inset(0 0 100% 0)';
+    else { el.style.opacity='0'; el.style.transform=`translateY(${this.full?56:20}px)`; }
+  }
+  show(el){
+    const d=+(el.dataset.delay||0);
+    el.style.transition=`opacity 1s ${EASE} ${d}ms, transform 1.1s ${EASE} ${d}ms, clip-path 1.4s cubic-bezier(.77,0,.18,1) ${d}ms`;
+    el.style.opacity='1'; el.style.transform='none'; el.style.clipPath='inset(0 0 0% 0)';
+  }
+  countUp(el){
+    const to=+el.dataset.count, t0=performance.now();
+    const f=t=>{ const p=clamp((t-t0)/1600); el.textContent=String(Math.round((1-Math.pow(1-p,3))*to)); if(p<1) requestAnimationFrame(f); };
+    requestAnimationFrame(f);
+  }
+  stagger(key){
+    this.root.querySelectorAll(`[data-stagger="${key}"]`).forEach((el,i)=>el.animate(
+      [{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],
+      {duration:700,delay:Math.min(i,12)*40,easing:EASE,fill:'backwards'}));
+  }
+  wipe(el){ if(el) el.animate([{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:1000,easing:'cubic-bezier(.77,0,.18,1)'}); }
+  setRing(hit){
+    const r=this.ringRef.current, lb=this.ringLabelRef.current; if(!r||!lb) return;
+    const label=hit&&hit.dataset ? (hit.dataset.cursor||'') : '';
+    if(hit&&label){ r.style.width='88px'; r.style.height='88px'; r.style.margin='-44px 0 0 -44px'; r.style.background='#e9b04f'; lb.textContent=label; }
+    else if(hit){ r.style.width='64px'; r.style.height='64px'; r.style.margin='-32px 0 0 -32px'; r.style.background='rgba(233,176,79,.12)'; lb.textContent=''; }
+    else { r.style.width='40px'; r.style.height='40px'; r.style.margin='-20px 0 0 -20px'; r.style.background='transparent'; lb.textContent=''; }
+  }
+  sizeGallery(){
+    const s=this.galRef.current, t=this.trackRef.current; if(!s||!t) return;
+    this.galExtra=Math.max(0,t.scrollWidth-innerWidth); s.style.height=(this.galExtra+innerHeight)+'px';
+  }
+
+  loop(){
+    const vh=innerHeight, y=scrollY;
+    const nav=this.navRef.current;
+    if(nav){ const on=y>40; if(on!==this.navOn){ this.navOn=on;
+      nav.style.background=on?'rgba(15,12,10,.72)':'transparent'; nav.style.backdropFilter=on?'blur(14px)':'none';
+      nav.style.webkitBackdropFilter=nav.style.backdropFilter; nav.style.borderBottomColor=on?'rgba(243,237,228,.1)':'transparent'; } }
+    const pr=this.progRef.current; if(pr){ const h=document.documentElement.scrollHeight-vh; pr.style.transform=`scaleX(${h>0?y/h:0})`; }
+
+    const k=this.full?1:.35;
+    for(const el of this.par){ const p=el.parentElement; if(!p) continue; const r=p.getBoundingClientRect();
+      if(r.bottom<-200||r.top>vh+200) continue; const c=r.top+r.height/2-vh/2;
+      el.style.transform=`translate3d(0,${(-c*(+el.dataset.speed)*k).toFixed(1)}px,0) scale(1.18)`; }
+
+    const ab=this.aboutRef.current;
+    if(ab&&this.words.length){ const r=ab.getBoundingClientRect(); const p=clamp((vh*.85-r.top)/(r.height+vh*.35));
+      const n=this.words.length;
+      this.words.forEach((w,i)=>{ const on=i/n<p; if(this.wordState[i]!==on){ this.wordState[i]=on; w.style.opacity=on?'1':'.16'; } }); }
+
+    const gs=this.galRef.current, tr=this.trackRef.current;
+    if(gs&&tr){ const r=gs.getBoundingClientRect(); const tot=r.height-vh; const p=tot>0?clamp(-r.top/tot):0;
+      tr.style.transform=`translate3d(${(-p*(this.galExtra||0)).toFixed(1)}px,0,0)`;
+      const gb=this.galBarRef.current; if(gb) gb.style.transform=`scaleX(${p})`; }
+
+    const curOn=(this.props.cursor??true)&&this.fine;
+    const ring=this.ringRef.current, dot=this.dotRef.current;
+    if(ring&&dot){
+      if(curOn!==this.curOn){ this.curOn=curOn; ring.style.display=curOn?'flex':'none'; dot.style.display=curOn?'block':'none'; }
+      if(curOn){ this.rx+=(this.mx-this.rx)*.16; this.ry+=(this.my-this.ry)*.16;
+        ring.style.transform=`translate3d(${this.rx}px,${this.ry}px,0)`; dot.style.transform=`translate3d(${this.mx}px,${this.my}px,0)`; }
+    }
+    const fl=this.floatRef.current;
+    if(fl&&this.fine){ this.fx+=(this.mx-this.fx)*.12; this.fy+=(this.my-this.fy)*.12;
+      const v=clamp((this.fx-this.lastFx)*.6,-12,12); this.lastFx=this.fx;
+      fl.style.transform=`translate3d(${this.fx}px,${this.fy}px,0) rotate(${v.toFixed(2)}deg)`; }
+
+    if(this.fine&&this.full){ for(const m of this.magnets){ const r=m.getBoundingClientRect(); if(r.bottom<0||r.top>vh) continue;
+      const cx=r.left+r.width/2-(m._tx||0), cy=r.top+r.height/2-(m._ty||0), dx=this.mx-cx, dy=this.my-cy, d=Math.hypot(dx,dy), R=Math.max(r.width,r.height)*.5+60;
+      const tx=d<R?dx*.28:0, ty=d<R?dy*.28:0; m._tx=(m._tx||0)+(tx-(m._tx||0))*.18; m._ty=(m._ty||0)+(ty-(m._ty||0))*.18;
+      m.style.transform=`translate3d(${m._tx.toFixed(2)}px,${m._ty.toFixed(2)}px,0)`; } }
+
+    this.raf=requestAnimationFrame(this.loop);
+  }
+
+  renderVals(){
+    const s=this.state, role=ROLES[s.role], tr=TRAIN[s.train];
+    return {
+      rootRef:this.rootRef, loaderRef:this.loaderRef, barRef:this.barRef, countRef:this.countRef, navRef:this.navRef, progRef:this.progRef,
+      aboutRef:this.aboutRef, galRef:this.galRef, trackRef:this.trackRef, galBarRef:this.galBarRef, ringRef:this.ringRef, ringLabelRef:this.ringLabelRef,
+      dotRef:this.dotRef, floatRef:this.floatRef, floatImgRef:this.floatImgRef, roleImgRef:this.roleImgRef, trainImgRef:this.trainImgRef,
+      wide:!s.narrow, narrow:s.narrow, menuOpen:s.menu, menuLabel:s.menu?'Close':'Menu',
+      toggleMenu:()=>this.setState(p=>({menu:!p.menu})), closeMenu:()=>this.setState({menu:false}),
+      heroImgCol:s.narrow?'3 / 13':'7 / 12',
+      marquee:[...MQ,...MQ].map((t,i)=>({t,fs:i%2?'italic':'normal',c:i%2?'#e9b04f':'#f3ede4'})),
+      marquee2:[...MQ2,...MQ2,...MQ2],
+      words:WORDS,
+      highlights:HL.map(h=>({year:h[0],title:h[1],place:h[2],img:String(h[3])})),
+      roles:ROLES.map((r,i)=>{const a=i===s.role; return {name:r.name,select:()=>this.setState({role:i}),bg:a?'#e9b04f':'transparent',fg:a?'#0f0c0a':'#f3ede4',bd:a?'#e9b04f':'rgba(243,237,228,.26)'};}),
+      rolesCols:s.narrow?'minmax(0,1fr)':'minmax(0,5fr) minmax(0,7fr)', rolePos:s.narrow?'relative':'sticky', roleImgMax:s.narrow?'420px':'100%',
+      role:{name:role.name,img:W(role.img,1200),idx:pad(s.role+1),groups:role.groups.map((g,gi)=>{
+        const key=s.role+'-'+gi, open=!!s.exp[key], lim=6;
+        return {title:g.title,hasMore:g.items.length>lim,moreLabel:open?'Show less':`Show all ${g.items.length}`,
+          items:(open?g.items:g.items.slice(0,lim)).map((t,i)=>({t,n:pad(i+1)})),
+          toggle:()=>this.setState(p=>({exp:{...p.exp,[key]:!p.exp[key]}}))};})},
+      gallery:GAL.map((g,i)=>({src:W(g[0],1400),ar:g[1],h:g[2],al:g[3],r:(g[1]==='9/16'||g[1]==='2/3')?'999px 999px 0 0':'18px',n:pad(i+1)})),
+      showKathak:()=>this.setState({train:'kathak'}), showBelly:()=>this.setState({train:'belly'}),
+      kColor:s.train==='kathak'?'#1a1410':'transparent', bColor:s.train==='belly'?'#1a1410':'transparent',
+      trainImg:W(tr.img,1400), trainName:tr.name, trainAr:tr.ar,
+      trainItems:tr.items.map((t,i)=>({t,n:pad(i+1)})),
+      aux:AUX,
+      playing:s.playing, notPlaying:!s.playing, play:()=>this.setState({playing:true}),
+      awards:AWARDS.map((t,i)=>({t,n:pad(i+1)}))
+    };
+  }
+}
+</script>
+</body>
+</html>
