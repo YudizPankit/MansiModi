@@ -30,10 +30,22 @@ a:hover{color:#f3ede4}
 
 <div ref="{{ loaderRef }}" style="position:fixed;inset:0;z-index:100;background:#0f0c0a;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,4vw,56px)">
   <div style="display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span>Mansi Modi</span><span>Artiste &amp; Artpreneur</span></div>
-  <div style="font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(96px,18vw,260px);line-height:1.1;color:#e9b04f;text-align:center">नृत्य</div>
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,3vh,28px);min-height:0">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(120px,30vw,380px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(233,176,79,.16);pointer-events:none;user-select:none">नृत्य</div>
+    <div style="position:relative;height:min(46vh,420px);aspect-ratio:4/5;max-width:78vw;border-radius:999px 999px 0 0;overflow:hidden;background:#17120f;box-shadow:0 0 0 1px rgba(233,176,79,.35),0 0 0 10px #0f0c0a,0 0 0 11px rgba(233,176,79,.18)">
+      <img data-ld-img="0" src="{{ ldImg0 }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ ldPos0 }};clip-path:inset(0 0 0 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1),transform 2.6s ease-out;transform:scale(1.12)">
+      <img data-ld-img="1" src="{{ ldImg1 }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ ldPos1 }};clip-path:inset(100% 0 0 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1),transform 2.6s ease-out;transform:scale(1.12)">
+      <img data-ld-img="2" src="{{ ldImg2 }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;clip-path:inset(100% 0 0 0);transition:clip-path .9s cubic-bezier(.76,0,.24,1),transform 2.6s ease-out;transform:scale(1.12)">
+    </div>
+    <div style="position:relative;height:1.15em;overflow:hidden;font-family:'Instrument Serif',serif;font-size:clamp(34px,6vw,64px);line-height:1.15;color:#f3ede4;text-align:center;width:100%">
+      <span data-ld-name="0" style="position:absolute;left:0;right:0;transition:transform .8s cubic-bezier(.76,0,.24,1);transform:translateY(0)">Kathak</span>
+      <span data-ld-name="1" style="position:absolute;left:0;right:0;transition:transform .8s cubic-bezier(.76,0,.24,1);transform:translateY(110%);font-style:italic;color:#e9b04f">Belly Dance</span>
+      <span data-ld-name="2" style="position:absolute;left:0;right:0;transition:transform .8s cubic-bezier(.76,0,.24,1);transform:translateY(110%)">Choreography</span>
+    </div>
+  </div>
   <div style="display:flex;flex-direction:column;gap:16px">
     <div style="height:1px;background:rgba(243,237,228,.16);overflow:hidden"><div ref="{{ barRef }}" style="height:100%;background:#e9b04f;transform-origin:left;transform:scaleX(0)"></div></div>
-    <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span>Setting the stage</span><span ref="{{ countRef }}" style="font-variant-numeric:tabular-nums">000</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#b5a899"><span>Kathak · Belly · Choreography</span><span ref="{{ countRef }}" style="font-variant-numeric:tabular-nums">000</span></div>
   </div>
 </div>
 
@@ -678,8 +690,13 @@ class Component extends DCLogic {
   }
 
   runLoader(){
-    const t0=performance.now(), dur=1800, bar=this.barRef.current, cnt=this.countRef.current;
+    const t0=performance.now(), dur=4200, bar=this.barRef.current, cnt=this.countRef.current;
+    const L=this.loaderRef.current, imgs=L?[...L.querySelectorAll('[data-ld-img]')]:[], names=L?[...L.querySelectorAll('[data-ld-name]')]:[];
+    imgs.forEach(i=>{ i.style.transform='scale(1)'; }); let cur=0;
+    const show=k=>{ imgs.forEach((im,j)=>{ im.style.clipPath=j===k?'inset(0 0 0 0)':(j<k?'inset(0 0 100% 0)':'inset(100% 0 0 0)'); im.style.transform=j===k?'scale(1)':'scale(1.12)'; });
+      names.forEach((n,j)=>{ n.style.transform=j===k?'translateY(0)':(j<k?'translateY(-110%)':'translateY(110%)'); }); };
     const tick=t=>{ const p=clamp((t-t0)/dur), e=1-Math.pow(1-p,3);
+      const k=p<.34?0:p<.67?1:2; if(k!==cur){ cur=k; show(k); }
       if(cnt) cnt.textContent=String(Math.round(e*100)).padStart(3,'0');
       if(bar) bar.style.transform=`scaleX(${e})`;
       if(p<1) this.lraf=requestAnimationFrame(tick); else this.exitLoader(); };
@@ -839,6 +856,7 @@ class Component extends DCLogic {
     const years=[]; HL.forEach(h=>{ let y=years.find(x=>x.year===h[0]); if(!y){ y={year:h[0],events:[]}; years.push(y);} y.events.push({title:h[1],place:h[2]||'International'}); });
     return {
       ...refs,
+      ldImg0:W(TRAIN.kathak.img,900), ldImg1:W(TRAIN.belly.img,900), ldImg2:W(7,900), ldPos0:TPOS.kathak, ldPos1:TPOS.belly,
       wide:!s.narrow, narrow:s.narrow, menuOpen:s.menu, menuLabel:s.menu?'Close':'Menu',
       menuLinks:[['About','#about'],['Portfolio','#portfolio'],['Highlights','#highlights'],['Gallery','#gallery'],['Training','#training'],['Awards','#awards']].map((x,i)=>({t:x[0],href:x[1],n:'0'+(i+1)})),
       burgerColor:s.menu?'#e9b04f':'#f3ede4', burgerTop:s.menu?'translateY(0) rotate(45deg)':'translateY(-6px)', burgerMid:s.menu?'scaleX(0)':'none', burgerMidOp:s.menu?0:1, burgerBot:s.menu?'translateY(0) rotate(-45deg)':'translateY(6px)',
