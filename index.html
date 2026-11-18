@@ -9,6 +9,7 @@
 <x-dc>
 <helmet>
 <title>Mansi Modi · Artiste &amp; Artpreneur</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -19,6 +20,8 @@ body{margin:0;background:#0f0c0a;color:#f3ede4;font-family:Manrope,system-ui,san
 *{box-sizing:border-box}
 a{color:#e9b04f;text-decoration:none}
 a:hover{color:#f3ede4}
+img,a{-webkit-user-drag:none;user-drag:none}
+button{-webkit-user-select:none;user-select:none}
 ::selection{background:#e9b04f;color:#0f0c0a}
 @keyframes mm-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes mm-marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
@@ -51,12 +54,10 @@ a:hover{color:#f3ede4}
 
 <div style="position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.07;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 <div ref="{{ progRef }}" style="position:fixed;top:0;left:0;right:0;height:2px;background:#e9b04f;transform-origin:left;transform:scaleX(0);z-index:60"></div>
-<div ref="{{ ringRef }}" style="position:fixed;top:0;left:0;width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid rgba(233,176,79,.75);border-radius:50%;pointer-events:none;z-index:96;display:none;align-items:center;justify-content:center;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#0f0c0a;transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),margin .35s cubic-bezier(.2,.7,.2,1),background .35s"><span ref="{{ ringLabelRef }}"></span></div>
-<div ref="{{ dotRef }}" style="position:fixed;top:0;left:0;width:6px;height:6px;margin:-3px 0 0 -3px;background:#e9b04f;border-radius:50%;pointer-events:none;z-index:97;display:none"></div>
 
 <header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent">
-  <div style="max-width:1440px;margin:0 auto;padding:16px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
-    <a href="#top" style="font-family:'Instrument Serif',serif;font-size:26px;color:#f3ede4;line-height:1">Mansi <span style="font-style:italic;color:#e9b04f">Modi</span></a>
+  <div style="max-width:1440px;margin:0 auto;padding:7px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" aria-label="Mansi Modi, home" style="display:block;color:#f3ede4;line-height:1"><span style="position:relative;width:66px;height:70px;border:1.5px solid #e9b04f;border-radius:999px 999px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px;box-sizing:border-box"><span style="position:absolute;inset:3px;border:1px solid #e9b04f;border-radius:999px 999px 0 0;opacity:.35"></span><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true" style="color:#e9b04f;margin-bottom:6px"><path d="M7 41V19a8.5 8.5 0 0 1 17 0a8.5 8.5 0 0 1 17 0v22M24 19v22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="6.5" r="1.9" fill="currentColor"/></svg><span style="font-family:'Instrument Serif',serif;font-size:14px;letter-spacing:.2em;text-transform:uppercase;padding-left:.2em;line-height:1">Mansi</span><span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;line-height:1;margin-top:2px">Modi</span></span></a>
     <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;align-items:center;gap:clamp(18px,2.2vw,34px);font-size:13px;letter-spacing:.06em">
         <a href="#about" style="color:#f3ede4" style-hover="color:#e9b04f">About</a>
@@ -125,7 +126,7 @@ a:hover{color:#f3ede4}
           <defs><path id="mm-circle2" d="M75,75 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"></path></defs>
           <text fill="#f3ede4" style="font-size:9.2px;letter-spacing:.6px;text-transform:uppercase;font-family:Manrope,sans-serif"><textPath href="#mm-circle2" textLength="387" lengthAdjust="spacing">Artiste · Artpreneur · Kathak · Belly Dance · Semi-Classical ·</textPath></text>
         </svg>
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Tiro Devanagari Hindi',serif;font-size:24px;color:#e9b04f">नृ</div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#e9b04f"><svg width="30" height="30" viewBox="0 0 48 48" aria-label="Mansi Modi" role="img"><path d="M7 41V19a8.5 8.5 0 0 1 17 0a8.5 8.5 0 0 1 17 0v22M24 19v22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="6.5" r="1.9" fill="currentColor"/></svg></div>
       </div>
     </div>
     <div ref="{{ heroEndRef }}" style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,56px) clamp(36px,7vh,72px);z-index:4;opacity:0;display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;max-width:1440px;margin:0 auto">
@@ -300,7 +301,7 @@ a:hover{color:#f3ede4}
         <p style="margin:0;color:#b5a899;font-size:15px;line-height:1.65;max-width:320px">Keep scrolling →</p>
       </div>
       <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="5">
-        <figure data-gal="" data-cursor="View" style="margin:0;flex:none;height:{{ g.h }};aspect-ratio:{{ g.ar }};align-self:{{ g.al }};border-radius:{{ g.r }};overflow:hidden;background:#0f0c0a;position:relative">
+        <figure data-gal="" style="margin:0;flex:none;height:{{ g.h }};aspect-ratio:{{ g.ar }};align-self:{{ g.al }};border-radius:{{ g.r }};overflow:hidden;background:#0f0c0a;position:relative">
           <img data-galimg="" src="{{ g.src }}" alt="Mansi Modi gallery photo" loading="lazy" style="position:absolute;top:0;left:-12%;width:124%;height:100%;object-fit:cover;display:block">
           <figcaption style="position:absolute;left:16px;bottom:14px;font-size:12px;letter-spacing:.16em;color:#f3ede4;text-shadow:0 1px 8px rgba(0,0,0,.6)">{{ g.n }}</figcaption>
         </figure>
@@ -314,9 +315,9 @@ a:hover{color:#f3ede4}
   <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,160px) clamp(20px,4vw,56px)">
     <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#5e5248;margin-bottom:24px"><span style="color:#9c4a1e">(05)</span><span>Training</span></div>
     <div data-reveal="" style="display:flex;align-items:baseline;gap:clamp(10px,2vw,28px);flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)">
-      <button onClick="{{ showKathak }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ kColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Kathak</button>
+      <button onClick="{{ showKathak }}" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ kColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Kathak</button>
       <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,6vw,96px);color:#9c4a1e">&amp;</span>
-      <button onClick="{{ showBelly }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ bColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Belly</button>
+      <button onClick="{{ showBelly }}" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ bColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Belly</button>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(36px,6vw,96px);align-items:center">
       <div ref="{{ trainImgRef }}" style="border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5;background:#ddd2c2;width:100%;max-width:560px">
@@ -361,17 +362,24 @@ a:hover{color:#f3ede4}
       </div>
       <a data-reveal="" href="https://www.youtube.com/channel/UCBwcccjUWK4hE4AMCUWQWoA" target="_blank" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#e9b04f;border-bottom:1px solid #e9b04f;padding-bottom:4px">YouTube channel ↗</a>
     </div>
-    <div ref="{{ videoRef }}" style="position:relative;aspect-ratio:16/9;border-radius:28px;overflow:hidden;background:#17120f;transform-origin:50% 30%;will-change:transform">
-      <sc-if value="{{ playing }}">
-        <iframe src="https://www.youtube-nocookie.com/embed/K924hJIgJc0?autoplay=1&amp;rel=0" title="Mansi Modi videos" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-      </sc-if>
-      <sc-if value="{{ notPlaying }}" hint-placeholder-val="{{ true }}">
-        <button onClick="{{ play }}" data-cursor="Play" style="all:unset;position:absolute;inset:0;cursor:pointer;display:block">
-          <img data-speed="0.1" src="assets/img/video-poster.jpg" alt="Video thumbnail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18)">
-          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,0) 40%,rgba(15,12,10,.7))"></span>
-          <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(84px,10vw,140px);height:clamp(84px,10vw,140px);border-radius:50%;background:#e9b04f;color:#0f0c0a;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Play</span>
-        </button>
-      </sc-if>
+    <div ref="{{ videoRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(20px,2.6vw,36px);transform-origin:50% 30%">
+      <sc-for list="{{ videos }}" as="v">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+          <div style="position:relative;aspect-ratio:16/9;border-radius:28px;overflow:hidden;background:#17120f">
+            <sc-if value="{{ v.playing }}">
+              <iframe src="{{ v.embed }}" title="{{ v.title }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+            </sc-if>
+            <sc-if value="{{ v.notPlaying }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ v.play }}" aria-label="{{ v.label }}" style="all:unset;position:absolute;inset:0;cursor:pointer;display:block">
+                <img src="{{ v.poster }}" alt="{{ v.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+                <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,0) 40%,rgba(15,12,10,.7))"></span>
+                <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);border-radius:50%;background:#e9b04f;color:#0f0c0a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Play</span>
+              </button>
+            </sc-if>
+          </div>
+          <a href="{{ v.url }}" target="_blank" rel="noopener" style="font-size:14px;line-height:1.5;color:#d8cdbf" style-hover="color:#e9b04f">{{ v.title }} ↗</a>
+        </div>
+      </sc-for>
     </div>
   </div>
 </section>
@@ -488,6 +496,10 @@ const MQ2=['Kathak','Belly Dance','Semi-Classical','Choreography','Curation','Te
 const ROLES=[
 {name:'Performer',img:0,groups:[
 {title:'Performances & Artistic Journey',items:[
+`Performed and choreographed “Confluence” at the Nritya Parva Festival 2025, Vadodara.`,
+`Played the character of Satu Maa in a street art act narrated by Preetidas at Satu Ma Ni Pol, Ahmedabad, in October 2026.`,
+`Choreographed and performed “Tippani Raas” at Navshakti Garba in October 2026, representing Gujarat’s folk culture.`,
+`Conceptualised and curated a group dance for Tatva Garba, where Kathak meets Garba, at Monkey Forest, Ahmedabad, in 2026.`,
 `Presented solo Kathak recital SAM at Kanoria Centre For Arts, Ahmedabad & Nrityam Saketam Festival, Chennai, September 2026.`,
 `Offered Kathak solo performances of Nritta and Abhinaya, with live music, at Guru–Shishya Connect conducted by Guru Aniket Khandekar in Ahmedabad, April 2026.`,
 `Brought the Kathak composition “Chaturang” to the Hyderabad Dance Festival in April 2026.`,
@@ -523,8 +535,7 @@ const ROLES=[
 `Danced Garba, Gujarat’s folk dance, in Mauritius before Prime Minister Navin Ramgoolam in 2013.`,
 `Has danced before renowned personalities including Sandip Soparrkar, Jesse Randhawa, Geeta Kapoor, Raghav Juyal, Terence Lewis, Dharmesh Yelande, and others.`,
 `Represented Gujarat folk dance at the Alva’s National Folk Festival, Moodbidri (Mangalore).`,
-`Kadamb productions including Vivarta, Movement & Stills, Meraki, Yugantar, and Bells took her across India and abroad, including Palestine, Russia, Paris, and Italy.`]},
-{title:'AATMAN (Initiative)',items:[
+`Kadamb productions including Vivarta, Movement & Stills, Meraki, Yugantar, and Bells took her across India and abroad, including Palestine, Russia, France, and Italy.`,
 `“Confluence,” a contemporary-classical production, was presented at the Nritya Parva Festival, Vadodara, in February 2026.`,
 `Team Aatman took the stage at ICMC 2023, MICA Ahmedabad.`,
 `A Team Aatman dance production for YFLO Ahmedabad was staged at Umang Hutheesing Haveli, Ahmedabad.`,
@@ -563,7 +574,8 @@ const ROLES=[
 `Conceptualized the storytelling-based hip-hop production Tinge of Actuality with DDS Crew for Abhivyakti City Art Festival Edition 2, Ahmedabad.`,
 `Collaborated with the UNM Foundation for the promotion of Abhivyakti and presented the production Dance With Me at Abhivyakti City Art Festival Edition 1.`,
 `Explores and experiments with Tribal Fusion Belly Dance while conducting Belly Dance and Tribal Fusion workshops for women and pregnant participants.`,
-`Teaches movement analysis in theatre workshops alongside Abhinay Banker.`]}]},
+`Teaches movement analysis in theatre workshops alongside Abhinay Banker.`,
+`Conducts Semi-Classical dance workshops every month.`]}]},
 {name:'Teacher',img:13,groups:[
 {title:'Teaching & Academic Experience',items:[
 `Conducted a workshop on “Psychophysical Approach to Dance” at the Alti Palti Festival, Mumbai, in April 2026.`,
@@ -593,7 +605,7 @@ const ROLES=[
 const TRAIN={
 kathak:{name:'Kathak',img:1,src:'assets/img/training-kathak.jpg',ar:'3/2',items:[
 `Disciple of Kumudini Lakhia, recipient of the Padma Vibhushan.`,
-`Over 15 years of classical Kathak training at Kadamb Centre for Dance, with an ongoing exploration of new movement vocabulary.`,
+`Over 20 years of classical Kathak training at Kadamb Centre for Dance, with an ongoing exploration of new movement vocabulary.`,
 `Guided by Birju Maharaj through workshops held in Ahmedabad, Mumbai, and Delhi.`,
 `Abhinaya training with Saswati Sen at Upasana School of Performing Arts.`,
 `Extensive workshop experience with renowned artists Aditi Mangaldas, Rajendra Gangani, and Gauri Diwakar.`,
@@ -634,10 +646,11 @@ const AWARDS=[
 const GAL_V1=[[4,'3/2','56vh','flex-start'],[5,'9/16','68vh','flex-end'],[9,'5/3','44vh','center'],[10,'7/5','54vh','flex-start'],[8,'1/1','50vh','flex-end'],[6,'3/2','52vh','center'],[7,'2/3','66vh','flex-start'],[11,'3/2','46vh','flex-end'],[13,'2/3','62vh','center'],[0,'7/5','54vh','flex-start']];
 
 const AR=['7/5','3/2','7/8','2/3','3/2','9/16','3/2','2/3','1/1','5/3','7/5','3/2','2/3','2/3','3/4'];
-const GAL=[['gallery-1','2/3','64vh','flex-start'],['gallery-2','3/4','56vh','flex-end'],['gallery-3','3/4','62vh','center'],['gallery-4','3/4','54vh','flex-start'],['gallery-12','3/2','46vh','center'],['gallery-8','45/57','60vh','flex-end'],['gallery-5','3/4','60vh','flex-start'],['gallery-6','2/3','64vh','center'],['gallery-9','2/3','62vh','flex-end'],['gallery-10','2/3','58vh','flex-start'],['gallery-7','2/3','58vh','flex-start'],['gallery-11','2/3','64vh','center']];
+const GAL=[['gallery-1','2/3','64vh','flex-start'],['gallery-14','3/2','46vh','flex-end'],['gallery-4','3/4','54vh','flex-end'],['gallery-16','9/16','68vh','flex-start'],['gallery-12','3/2','46vh','center'],['gallery-15','3/2','44vh','flex-end'],['gallery-8','45/57','60vh','flex-end'],['gallery-18','3/4','58vh','flex-start'],['gallery-6','2/3','64vh','center'],['gallery-17','3/2','46vh','flex-start'],['gallery-10','2/3','58vh','flex-start'],['gallery-19','3/2','46vh','flex-end'],['gallery-7','2/3','58vh','flex-end'],['gallery-20','3/2','44vh','center'],['gallery-11','2/3','64vh','center'],['gallery-13','3/2','46vh','flex-start']];
 const COL=[[5,'3%','1%','clamp(120px,18vw,280px)',-.35,0],[4,'56%','0%','clamp(170px,28vw,440px)',.3,2],[14,'30%','13%','clamp(100px,13vw,200px)',-.6,2],[12,'79%','22%','clamp(110px,16vw,250px)',-.5,2],[10,'1%','33%','clamp(160px,26vw,380px)',.45,2],[8,'45%','40%','clamp(110px,15vw,230px)',.2,0],[2,'71%','50%','clamp(120px,18vw,270px)',-.25,0],[0,'16%','60%','clamp(150px,24vw,360px)',-.15,2],[11,'58%','70%','clamp(150px,24vw,350px)',.5,2],[13,'4%','80%','clamp(110px,16vw,240px)',-.4,0],[1,'36%','87%','clamp(140px,22vw,320px)',.35,2]];
 const AW_ALL=[['Appreciation Award as Dance Director for Drama','Arpan International Theatres, Arpan 55 (1971–2026). Ahmedabad, 3 November 2026.'],['Creative Entrepreneur of the Year, 2022.','Organised by Fempreneur Conference& Award.'],['Torch Bearer in Performing Art','Grand Queens Club Global Leadership Awards 2022. Ahmedabad'],['Felicitated by Rotract club of Youth United','for standing as the best example of Dance enthusiasm and achieving the spectacular milestone in Indian Classical Dance. Rotary, June 2022.'],['The Vrindrani Award 2022’’','by Lasya Dance Pvt. Ltd, Chennai.'],['Award of Excellence for Classical & Western Dancer','in the Category of Indian Cultural Dance by Ankhodekhi Print Media & Sun Today Newspaper.'],['Won 1st prize in Pandit Atul Desai Foundation Music & Dance Competition.','Organized Pan India.'],['Won WHIZ Indian classical dance competition','at NCPA – Mumbai'],['Won state level competitions','like Ahmedabad Mirror Talent Hunt, Josh 2012 & 2014 (organized by NAEMD), Youth Festival (organized by Gujarat University) and competitions organized by NIEM'],['Participated and got accolades in competitions','like IGT, India’s Dancing Super Star, Boogie Woogie, DID and So you think you can dance.']];
-const YSRC={'2024':'assets/img/highlight-2024.jpg','2023':'assets/img/highlight-2023.jpg','2022':'assets/img/highlight-2022.jpg','2021':'assets/img/highlight-2021.jpg'};
+const VIDEOS=[{id:'A6FZb3Av63c',title:'Kathak · Mansi Modi, Kadamb Centre for Dance',poster:'assets/img/video-1.jpg'},{id:'u9dgOA4iQyU',title:'Belly Dance · World Dance Day, Furor Celebration',poster:'assets/img/video-2.jpg'}];
+const YSRC={'2024':'assets/img/highlight-2024.jpg','2023':'assets/img/highlight-2023.jpg','2022':'assets/img/highlight-2022.jpg','2021':'assets/img/highlight-2021.jpg','2015':'assets/img/highlight-2015.jpg'};
 const YIMG={'2026':14,'2025':6,'2024':9,'2023':4,'2022':8,'2021':10,'2018':1,'2015':11};
 const POS=['72% 30%','50% 25%','50% 30%','44% 25%'];
 const TPOS={kathak:'50% 50%',belly:'50% 15%'};
@@ -650,10 +663,10 @@ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 
 class Component extends DCLogic {
-  state={train:'kathak',playing:false,narrow:false,menu:false,sheet:null,rexp:{}};
+  state={train:'kathak',vplay:{},narrow:false,menu:false,sheet:null,rexp:{}};
   rootRef=React.createRef(); loaderRef=React.createRef(); barRef=React.createRef(); countRef=React.createRef();
   navRef=React.createRef(); progRef=React.createRef(); aboutRef=React.createRef(); galRef=React.createRef(); galCountRef=React.createRef();
-  trackRef=React.createRef(); galBarRef=React.createRef(); ringRef=React.createRef(); ringLabelRef=React.createRef(); dotRef=React.createRef();
+  trackRef=React.createRef(); galBarRef=React.createRef(); 
   trainImgRef=React.createRef(); heroRef=React.createRef(); heroClipRef=React.createRef(); heroImgRef=React.createRef(); heroShadeRef=React.createRef();
   nameARef=React.createRef(); nameBRef=React.createRef(); heroTopRef=React.createRef(); heroBottomRef=React.createRef(); heroEndRef=React.createRef();
   videoRef=React.createRef(); menuRef=React.createRef(); nrRef=React.createRef(); nrWrapRef=React.createRef(); nrFillRef=React.createRef(); nrSubRef=React.createRef();
@@ -681,8 +694,7 @@ class Component extends DCLogic {
 
     this.onMove=e=>{ this.mx=e.clientX; this.my=e.clientY; };
     addEventListener('pointermove',this.onMove,{passive:true});
-    this.onOver=e=>{ const t=e.target; if(!t||!t.closest) return; const hit=t.closest('a,button,[data-cursor]'); if(hit!==this.curHit){ this.curHit=hit; this.setRing(hit); } };
-    root.addEventListener('pointerover',this.onOver);
+    this.onDrag=e=>e.preventDefault(); addEventListener('dragstart',this.onDrag);
 
     if(remount){ const l=this.loaderRef.current; if(l) l.style.display='none'; document.body.style.overflow=''; }
     else if(this.props.showLoader??true){ document.body.style.overflow='hidden'; this.runLoader(); }
@@ -691,8 +703,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){
     cancelAnimationFrame(this.raf); cancelAnimationFrame(this.lraf); cancelAnimationFrame(this.iraf);
-    removeEventListener('resize',this.onResize); removeEventListener('pointermove',this.onMove); removeEventListener('keydown',this.onKey);
-    this.root&&this.root.removeEventListener('pointerover',this.onOver);
+    removeEventListener('resize',this.onResize); removeEventListener('pointermove',this.onMove); removeEventListener('dragstart',this.onDrag); removeEventListener('keydown',this.onKey);
     this.io&&this.io.disconnect(); this.cio&&this.cio.disconnect(); document.body.style.overflow='';
   }
   componentDidUpdate(pp,ps){
@@ -777,12 +788,6 @@ class Component extends DCLogic {
       {duration:700,delay:120+Math.min(i,14)*40,easing:EASE,fill:'backwards'}));
   }
   wipe(el){ if(el) el.animate([{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:1000,easing:'cubic-bezier(.77,0,.18,1)'}); }
-  setRing(hit){
-    const r=this.ringRef.current, lb=this.ringLabelRef.current; if(!r||!lb) return;
-    const label=hit&&hit.dataset?(hit.dataset.cursor||''):'';
-    const set=(s,bg,t)=>{ r.style.width=s+'px'; r.style.height=s+'px'; r.style.margin=`${-s/2}px 0 0 ${-s/2}px`; r.style.background=bg; lb.textContent=t; };
-    if(hit&&label) set(88,'#e9b04f',label); else if(hit) set(64,'rgba(233,176,79,.12)',''); else set(40,'transparent','');
-  }
   sizeGallery(){
     const s=this.galRef.current, t=this.trackRef.current; if(!s||!t) return;
     this.galExtra=Math.max(0,t.scrollWidth-innerWidth); s.style.height=(this.galExtra+innerHeight)+'px';
@@ -877,13 +882,8 @@ class Component extends DCLogic {
           const o=((fr.left+fr.width/2)-vw/2)/vw; if(im) im.style.transform=`translate3d(${(-o*10*k).toFixed(2)}%,0,0)`; } } }
 
     const vd=this.videoRef.current;
-    if(vd){ const r=vd.getBoundingClientRect(); if(r.top<vh&&r.bottom>0){ const p=clamp((vh-r.top)/(vh*.85)); vd.style.transform=`scale(${(.78+.22*ease(p)).toFixed(4)})`; } }
+    if(vd){ const still=this.state.narrow||Object.keys(this.state.vplay||{}).length>0; if(still){ if(vd.style.transform!=='none') vd.style.transform='none'; } else { const r=vd.getBoundingClientRect(); if(r.top<vh&&r.bottom>0){ const p=clamp((vh-r.top)/(vh*.85)); vd.style.transform=`scale(${(.78+.22*ease(p)).toFixed(4)})`; } } }
 
-    const curOn=(this.props.cursor??true)&&this.fine, ring=this.ringRef.current, dot=this.dotRef.current;
-    if(ring&&dot){
-      if(curOn!==this.curOn){ this.curOn=curOn; ring.style.display=curOn?'flex':'none'; dot.style.display=curOn?'block':'none'; }
-      if(curOn){ this.rx+=(this.mx-this.rx)*.16; this.ry+=(this.my-this.ry)*.16;
-        ring.style.transform=`translate3d(${this.rx}px,${this.ry}px,0)`; dot.style.transform=`translate3d(${this.mx}px,${this.my}px,0)`; } }
     if(this.fine&&this.full){ for(const m of this.magnets){ const r=m.getBoundingClientRect(); if(r.bottom<0||r.top>vh) continue;
       const cx=r.left+r.width/2-(m._tx||0), cy=r.top+r.height/2-(m._ty||0), dx=this.mx-cx, dy=this.my-cy, d=Math.hypot(dx,dy), R=Math.max(r.width,r.height)*.5+60;
       const tx=d<R?dx*.28:0, ty=d<R?dy*.28:0; m._tx=(m._tx||0)+(tx-(m._tx||0))*.18; m._ty=(m._ty||0)+(ty-(m._ty||0))*.18;
@@ -892,7 +892,7 @@ class Component extends DCLogic {
 
   renderVals(){
     const s={train:'kathak',rexp:{},...(this.state||{})}, tr=TRAIN[s.train]||TRAIN.kathak;
-    const refs={}; ['rootRef','loaderRef','barRef','countRef','navRef','progRef','aboutRef','galRef','galCountRef','trackRef','galBarRef','ringRef','ringLabelRef','dotRef','trainImgRef','heroRef','heroClipRef','heroImgRef','heroShadeRef','nameARef','nameBRef','heroTopRef','heroBottomRef','heroEndRef','videoRef','menuRef','nrRef','nrWrapRef','nrFillRef','nrSubRef'].forEach(k=>refs[k]=this[k]);
+    const refs={}; ['rootRef','loaderRef','barRef','countRef','navRef','progRef','aboutRef','galRef','galCountRef','trackRef','galBarRef','trainImgRef','heroRef','heroClipRef','heroImgRef','heroShadeRef','nameARef','nameBRef','heroTopRef','heroBottomRef','heroEndRef','videoRef','menuRef','nrRef','nrWrapRef','nrFillRef','nrSubRef'].forEach(k=>refs[k]=this[k]);
     const years=[]; HL.forEach(h=>{ let y=years.find(x=>x.year===h[0]); if(!y){ y={year:h[0],events:[]}; years.push(y);} y.events.push({title:h[1],place:h[2]||'International'}); });
     return {
       ...refs,
@@ -921,7 +921,7 @@ class Component extends DCLogic {
       trainImg:tr.src||W(tr.img,1400), trainName:tr.name, trainPos:TPOS[s.train], trainCount:tr.items.length,
       trainItems:tr.items.map((t,i)=>({t,n:pad(i+1)})),
       aux:AUX.map((t,i)=>({t,n:pad(i+1)})),
-      playing:s.playing, notPlaying:!s.playing, play:()=>this.setState({playing:true}),
+      videos:VIDEOS.map(v=>({...v,label:"Play video: "+v.title,embed:`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&playsinline=1&rel=0`,url:`https://www.youtube.com/watch?v=${v.id}`,playing:!!s.vplay[v.id],notPlaying:!s.vplay[v.id],play:()=>{ if(this.videoRef.current) this.videoRef.current.style.transform='none'; this.setState(p=>({vplay:{...p.vplay,[v.id]:true}})); }})),
       awardsTop:AW_ALL.map((a,i)=>({title:a[0],by:a[1],d:String((i%3)*90)})),
       strip:[...I.map((_,i)=>i),...I.map((_,i)=>i)].map(i=>({src:W(i,700),ar:AR[i]}))
     };
