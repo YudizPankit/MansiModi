@@ -54,6 +54,8 @@ button{-webkit-user-select:none;user-select:none}
 
 <div style="position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.07;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 <div ref="{{ progRef }}" style="position:fixed;top:0;left:0;right:0;height:2px;background:#e9b04f;transform-origin:left;transform:scaleX(0);z-index:60"></div>
+<div ref="{{ ringRef }}" style="position:fixed;top:0;left:0;width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid rgba(233,176,79,.75);border-radius:50%;pointer-events:none;z-index:96;display:none;align-items:center;justify-content:center;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#0f0c0a;transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),margin .35s cubic-bezier(.2,.7,.2,1),background .35s"><span ref="{{ ringLabelRef }}"></span></div>
+<div ref="{{ dotRef }}" style="position:fixed;top:0;left:0;width:6px;height:6px;margin:-3px 0 0 -3px;background:#e9b04f;border-radius:50%;pointer-events:none;z-index:97;display:none"></div>
 
 <header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent">
   <div style="max-width:1440px;margin:0 auto;padding:7px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
@@ -301,7 +303,7 @@ button{-webkit-user-select:none;user-select:none}
         <p style="margin:0;color:#b5a899;font-size:15px;line-height:1.65;max-width:320px">Keep scrolling →</p>
       </div>
       <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="5">
-        <figure data-gal="" style="margin:0;flex:none;height:{{ g.h }};aspect-ratio:{{ g.ar }};align-self:{{ g.al }};border-radius:{{ g.r }};overflow:hidden;background:#0f0c0a;position:relative">
+        <figure data-gal="" data-cursor="View" style="margin:0;flex:none;height:{{ g.h }};aspect-ratio:{{ g.ar }};align-self:{{ g.al }};border-radius:{{ g.r }};overflow:hidden;background:#0f0c0a;position:relative">
           <img data-galimg="" src="{{ g.src }}" alt="Mansi Modi gallery photo" loading="lazy" style="position:absolute;top:0;left:-12%;width:124%;height:100%;object-fit:cover;display:block">
           <figcaption style="position:absolute;left:16px;bottom:14px;font-size:12px;letter-spacing:.16em;color:#f3ede4;text-shadow:0 1px 8px rgba(0,0,0,.6)">{{ g.n }}</figcaption>
         </figure>
@@ -315,9 +317,9 @@ button{-webkit-user-select:none;user-select:none}
   <div style="max-width:1440px;margin:0 auto;padding:clamp(90px,12vw,160px) clamp(20px,4vw,56px)">
     <div data-reveal="" style="display:flex;gap:18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#5e5248;margin-bottom:24px"><span style="color:#9c4a1e">(05)</span><span>Training</span></div>
     <div data-reveal="" style="display:flex;align-items:baseline;gap:clamp(10px,2vw,28px);flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)">
-      <button onClick="{{ showKathak }}" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ kColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Kathak</button>
+      <button onClick="{{ showKathak }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ kColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Kathak</button>
       <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,6vw,96px);color:#9c4a1e">&amp;</span>
-      <button onClick="{{ showBelly }}" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ bColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Belly</button>
+      <button onClick="{{ showBelly }}" data-cursor="" style="all:unset;cursor:pointer;font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(66px,11vw,176px);line-height:.95;letter-spacing:-.02em;color:{{ bColor }};-webkit-text-stroke:1px #1a1410;transition:color .4s">Belly</button>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(36px,6vw,96px);align-items:center">
       <div ref="{{ trainImgRef }}" style="border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/5;background:#ddd2c2;width:100%;max-width:560px">
@@ -370,7 +372,7 @@ button{-webkit-user-select:none;user-select:none}
               <iframe src="{{ v.embed }}" title="{{ v.title }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
             </sc-if>
             <sc-if value="{{ v.notPlaying }}" hint-placeholder-val="{{ true }}">
-              <button onClick="{{ v.play }}" aria-label="{{ v.label }}" style="all:unset;position:absolute;inset:0;cursor:pointer;display:block">
+              <button onClick="{{ v.play }}" aria-label="{{ v.label }}" data-cursor="Play" style="all:unset;position:absolute;inset:0;cursor:pointer;display:block">
                 <img src="{{ v.poster }}" alt="{{ v.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
                 <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,12,10,0) 40%,rgba(15,12,10,.7))"></span>
                 <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);border-radius:50%;background:#e9b04f;color:#0f0c0a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Play</span>
@@ -666,7 +668,7 @@ class Component extends DCLogic {
   state={train:'kathak',vplay:{},narrow:false,menu:false,sheet:null,rexp:{}};
   rootRef=React.createRef(); loaderRef=React.createRef(); barRef=React.createRef(); countRef=React.createRef();
   navRef=React.createRef(); progRef=React.createRef(); aboutRef=React.createRef(); galRef=React.createRef(); galCountRef=React.createRef();
-  trackRef=React.createRef(); galBarRef=React.createRef(); 
+  trackRef=React.createRef(); galBarRef=React.createRef(); ringRef=React.createRef(); ringLabelRef=React.createRef(); dotRef=React.createRef();
   trainImgRef=React.createRef(); heroRef=React.createRef(); heroClipRef=React.createRef(); heroImgRef=React.createRef(); heroShadeRef=React.createRef();
   nameARef=React.createRef(); nameBRef=React.createRef(); heroTopRef=React.createRef(); heroBottomRef=React.createRef(); heroEndRef=React.createRef();
   videoRef=React.createRef(); menuRef=React.createRef(); nrRef=React.createRef(); nrWrapRef=React.createRef(); nrFillRef=React.createRef(); nrSubRef=React.createRef();
@@ -694,6 +696,8 @@ class Component extends DCLogic {
 
     this.onMove=e=>{ this.mx=e.clientX; this.my=e.clientY; };
     addEventListener('pointermove',this.onMove,{passive:true});
+    this.onOver=e=>{ const t=e.target; if(!t||!t.closest) return; const hit=t.closest('a,button,[data-cursor]'); if(hit!==this.curHit){ this.curHit=hit; this.setRing(hit); } };
+    root.addEventListener('pointerover',this.onOver);
     this.onDrag=e=>e.preventDefault(); addEventListener('dragstart',this.onDrag);
 
     if(remount){ const l=this.loaderRef.current; if(l) l.style.display='none'; document.body.style.overflow=''; }
@@ -703,7 +707,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){
     cancelAnimationFrame(this.raf); cancelAnimationFrame(this.lraf); cancelAnimationFrame(this.iraf);
-    removeEventListener('resize',this.onResize); removeEventListener('pointermove',this.onMove); removeEventListener('dragstart',this.onDrag); removeEventListener('keydown',this.onKey);
+    removeEventListener('resize',this.onResize); removeEventListener('pointermove',this.onMove); removeEventListener('dragstart',this.onDrag); removeEventListener('keydown',this.onKey); this.root&&this.root.removeEventListener('pointerover',this.onOver);
     this.io&&this.io.disconnect(); this.cio&&this.cio.disconnect(); document.body.style.overflow='';
   }
   componentDidUpdate(pp,ps){
@@ -788,6 +792,12 @@ class Component extends DCLogic {
       {duration:700,delay:120+Math.min(i,14)*40,easing:EASE,fill:'backwards'}));
   }
   wipe(el){ if(el) el.animate([{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)'}],{duration:1000,easing:'cubic-bezier(.77,0,.18,1)'}); }
+  setRing(hit){
+    const r=this.ringRef.current, lb=this.ringLabelRef.current; if(!r||!lb) return;
+    const label=hit&&hit.dataset?(hit.dataset.cursor||''):'';
+    const set=(s,bg,t)=>{ r.style.width=s+'px'; r.style.height=s+'px'; r.style.margin=`${-s/2}px 0 0 ${-s/2}px`; r.style.background=bg; lb.textContent=t; };
+    if(hit&&label) set(88,'#e9b04f',label); else if(hit) set(64,'rgba(233,176,79,.12)',''); else set(40,'transparent','');
+  }
   sizeGallery(){
     const s=this.galRef.current, t=this.trackRef.current; if(!s||!t) return;
     this.galExtra=Math.max(0,t.scrollWidth-innerWidth); s.style.height=(this.galExtra+innerHeight)+'px';
@@ -884,6 +894,11 @@ class Component extends DCLogic {
     const vd=this.videoRef.current;
     if(vd){ const still=this.state.narrow||Object.keys(this.state.vplay||{}).length>0; if(still){ if(vd.style.transform!=='none') vd.style.transform='none'; } else { const r=vd.getBoundingClientRect(); if(r.top<vh&&r.bottom>0){ const p=clamp((vh-r.top)/(vh*.85)); vd.style.transform=`scale(${(.78+.22*ease(p)).toFixed(4)})`; } } }
 
+    const curOn=(this.props.cursor??true)&&this.fine, ring=this.ringRef.current, dot=this.dotRef.current;
+    if(ring&&dot){
+      if(curOn!==this.curOn){ this.curOn=curOn; ring.style.display=curOn?'flex':'none'; dot.style.display=curOn?'block':'none'; }
+      if(curOn){ this.rx+=(this.mx-this.rx)*.16; this.ry+=(this.my-this.ry)*.16;
+        ring.style.transform=`translate3d(${this.rx}px,${this.ry}px,0)`; dot.style.transform=`translate3d(${this.mx}px,${this.my}px,0)`; } }
     if(this.fine&&this.full){ for(const m of this.magnets){ const r=m.getBoundingClientRect(); if(r.bottom<0||r.top>vh) continue;
       const cx=r.left+r.width/2-(m._tx||0), cy=r.top+r.height/2-(m._ty||0), dx=this.mx-cx, dy=this.my-cy, d=Math.hypot(dx,dy), R=Math.max(r.width,r.height)*.5+60;
       const tx=d<R?dx*.28:0, ty=d<R?dy*.28:0; m._tx=(m._tx||0)+(tx-(m._tx||0))*.18; m._ty=(m._ty||0)+(ty-(m._ty||0))*.18;
@@ -892,7 +907,7 @@ class Component extends DCLogic {
 
   renderVals(){
     const s={train:'kathak',rexp:{},...(this.state||{})}, tr=TRAIN[s.train]||TRAIN.kathak;
-    const refs={}; ['rootRef','loaderRef','barRef','countRef','navRef','progRef','aboutRef','galRef','galCountRef','trackRef','galBarRef','trainImgRef','heroRef','heroClipRef','heroImgRef','heroShadeRef','nameARef','nameBRef','heroTopRef','heroBottomRef','heroEndRef','videoRef','menuRef','nrRef','nrWrapRef','nrFillRef','nrSubRef'].forEach(k=>refs[k]=this[k]);
+    const refs={}; ['rootRef','loaderRef','barRef','countRef','navRef','progRef','aboutRef','galRef','galCountRef','trackRef','galBarRef','ringRef','ringLabelRef','dotRef','trainImgRef','heroRef','heroClipRef','heroImgRef','heroShadeRef','nameARef','nameBRef','heroTopRef','heroBottomRef','heroEndRef','videoRef','menuRef','nrRef','nrWrapRef','nrFillRef','nrSubRef'].forEach(k=>refs[k]=this[k]);
     const years=[]; HL.forEach(h=>{ let y=years.find(x=>x.year===h[0]); if(!y){ y={year:h[0],events:[]}; years.push(y);} y.events.push({title:h[1],place:h[2]||'International'}); });
     return {
       ...refs,
