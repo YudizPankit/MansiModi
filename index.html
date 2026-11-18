@@ -481,7 +481,7 @@ const HL=[['2026','Nrityam Saketam Festival','Chennai',14],['2026','Hyderabad Da
 
 const MQ=['Nrityam Saketam Festival','Hyderabad Dance Festival','Alti-Palti Festival','NMACC','Khajuraho Festival','Kalakshetra Festival','NCPA Theatre','Opera House','Paris','Poland','Namaste Russia'];
 const COMMS=[
-{name:'Taqseem Tribe',tag:'Belly Dance',handle:'@taqseem_tribe',img:6,pos:'50% 30%',logo:'assets/taqseem-tribe-logo.jpg',url:'https://www.instagram.com/taqseem_tribe/',desc:'A community for belly dance lovers, built on the belief that belly dance is for everyone. Online and studio classes, Hafla nights, certificate courses and showcases, in a warm space where every age, body and background belongs.'},
+{name:'Taqseem Tribe',tag:'Belly Dance',handle:'@taqseem_tribe',img:6,pos:'50% 30%',logo:'assets/taqseem-tribe-logo.jpg',url:'https://www.instagram.com/taqseem_tribe/',desc:'Mansi Modi, with deep training in belly dance here in Gujarat, built Taqseem Tribe as a shelter for belly dance lovers. No age bar, no gender discrimination, no size or shape shaming, no religion or region restrictions. The motive is simple: pure belly dance, respected as an art, a celebration of our own body, and a way of embracing Arabic culture in Gujarat. The tribe comes together through weekend and online classes, hafla nights, dance jams, conversations, cultural readings and more. Mansi’s student Hetvi Ghadge has turned the idea into action with real dedication, helping the community grow.'},
 {name:'Nritya Sabha',tag:'Semi-Classical',handle:'@nritya.sabha',img:13,src:'assets/img/nritya-sabha.jpg',pos:'50% 50%',logo:'assets/nritya-sabha-logo.jpg',url:'https://www.instagram.com/nritya.sabha/',desc:'A spotlight for students. This is where you learn, practice, make mistakes and grow, on a journey from class to stage. No fear, no judgment, no pressure to be perfect, no worrying about steps. Just be yourself and express yourself. Left dancing years ago? Nritya Sabha is the place to reconnect. Mansi wants every student to feel that yes, I can do it, and whatever they wish from the heart, they will do with their feet.'}];
 const MQ2=['Kathak','Belly Dance','Semi-Classical','Choreography','Curation','Teaching'];
 
@@ -591,7 +591,7 @@ const ROLES=[
 `Held an informative session for The Muse at Ahmedabad University for the Youth on Lord Shiva.`]}]}];
 
 const TRAIN={
-kathak:{name:'Kathak',img:1,ar:'3/2',items:[
+kathak:{name:'Kathak',img:1,src:'assets/img/training-kathak.jpg',ar:'3/2',items:[
 `Disciple of Kumudini Lakhia, recipient of the Padma Vibhushan.`,
 `Over 15 years of classical Kathak training at Kadamb Centre for Dance, with an ongoing exploration of new movement vocabulary.`,
 `Guided by Birju Maharaj through workshops held in Ahmedabad, Mumbai, and Delhi.`,
@@ -640,7 +640,7 @@ const AW_ALL=[['Appreciation Award as Dance Director for Drama','Arpan Internati
 const YSRC={'2024':'assets/img/highlight-2024.jpg','2023':'assets/img/highlight-2023.jpg','2022':'assets/img/highlight-2022.jpg','2021':'assets/img/highlight-2021.jpg'};
 const YIMG={'2026':14,'2025':6,'2024':9,'2023':4,'2022':8,'2021':10,'2018':1,'2015':11};
 const POS=['72% 30%','50% 25%','50% 30%','44% 25%'];
-const TPOS={kathak:'58% 0%',belly:'50% 15%'};
+const TPOS={kathak:'50% 50%',belly:'50% 15%'};
 const TOP=[[0,9,11,14],[2,3,7,1],[2,4,0,3],[5,4,9,6]];
 const MM_VER=Math.random();
 const NRP=[[14,'50% 15%'],[4,'50% 30%'],[5,'50% 25%'],[9,'50% 50%'],[10,'60% 40%'],[8,'50% 30%'],[2,'50% 30%'],[0,'65% 35%'],[11,'50% 40%'],[13,'50% 30%']];
@@ -918,7 +918,7 @@ class Component extends DCLogic {
       gallery:GAL.map((g,i)=>({src:`assets/img/${g[0]}.jpg`,ar:g[1],h:s.narrow?`${Math.round(parseInt(g[2])*.78)}vh`:g[2],al:g[3],r:(g[1].includes('3/2')?'18px':'999px 999px 0 0'),n:pad(i+1)})),
       showKathak:()=>this.setState({train:'kathak'}), showBelly:()=>this.setState({train:'belly'}),
       kColor:s.train==='kathak'?'#1a1410':'transparent', bColor:s.train==='belly'?'#1a1410':'transparent',
-      trainImg:W(tr.img,1400), trainName:tr.name, trainPos:TPOS[s.train], trainCount:tr.items.length,
+      trainImg:tr.src||W(tr.img,1400), trainName:tr.name, trainPos:TPOS[s.train], trainCount:tr.items.length,
       trainItems:tr.items.map((t,i)=>({t,n:pad(i+1)})),
       aux:AUX.map((t,i)=>({t,n:pad(i+1)})),
       playing:s.playing, notPlaying:!s.playing, play:()=>this.setState({playing:true}),
